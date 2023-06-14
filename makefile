@@ -6,4 +6,4 @@ help:
 
 build: ## generate antlr code
 	@echo Generate antlr code
-	@cd ./kfgrammar && ./generate.sh
+	@cd ./kuneiform-grammar && ./generate.sh Go kfgrammar ../kfgrammar
