@@ -7,3 +7,7 @@ help:
 build: ## generate antlr code
 	@echo Generate antlr code
 	@cd ./kuneiform-grammar && ./generate.sh Go kfgrammar ../kfgrammar
+
+git-sync: ## sync submodule
+	@git submodule update --remote
+
