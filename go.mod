@@ -1,4 +1,4 @@
-module kuneiform-grammar-go
+module github.com/kwilteam/kuneiform-grammar-go
 
 go 1.19
 
