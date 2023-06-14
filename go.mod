@@ -1,4 +1,4 @@
-module kfgrammar
+module kuneiform-grammar-go
 
 go 1.19
 
