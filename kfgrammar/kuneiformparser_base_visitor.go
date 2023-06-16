@@ -51,6 +51,18 @@ func (v *BaseKuneiformParserVisitor) VisitIndex_def_list(ctx *Index_def_listCont
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseKuneiformParserVisitor) VisitForeign_key_action(ctx *Foreign_key_actionContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseKuneiformParserVisitor) VisitForeign_key_def(ctx *Foreign_key_defContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseKuneiformParserVisitor) VisitForeign_key_def_list(ctx *Foreign_key_def_listContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseKuneiformParserVisitor) VisitAction_decl(ctx *Action_declContext) interface{} {
 	return v.VisitChildren(ctx)
 }

@@ -35,105 +35,127 @@ func kuneiformparserParserInit() {
 		"", "';'", "'('", "'{'", "')'", "'}'", "','", "'.'", "'$'", "'@'", "'#'",
 		"'database'", "'table'", "'action'", "'public'", "'private'", "'int'",
 		"'text'", "'min'", "'max'", "'minlen'", "'maxlen'", "'notnull'", "'primary'",
-		"'default'", "'unique'", "'index'",
+		"'default'", "'unique'", "'index'", "'foreign_key'", "'references'",
+		"'on_update'", "'on_delete'", "'do'", "'no_action'", "'cascade'", "'set_null'",
+		"'set_default'", "'restrict'",
 	}
 	staticData.symbolicNames = []string{
 		"", "SCOL", "L_PAREN", "L_BRACE", "R_PAREN", "R_BRACE", "COMMA", "PERIOD",
 		"DOLLAR", "AT", "HASH", "DATABASE_", "TABLE_", "ACTION_", "PUBLIC_",
 		"PRIVATE_", "INT_", "TEXT_", "MIN_", "MAX_", "MIN_LEN_", "MAX_LEN_",
-		"NOT_NULL_", "PRIMARY_", "DEFAULT_", "UNIQUE_", "INDEX_", "SELECT_",
-		"INSERT_", "UPDATE_", "DELETE_", "WITH_", "IDENTIFIER", "INDEX_NAME",
-		"ACTION_PARAMETER", "UNSIGNED_NUMBER_LITERAL", "SIGNED_NUMBER_LITERAL",
-		"STRING_LITERAL", "WS", "TERMINATOR", "BLOCK_COMMENT", "LINE_COMMENT",
-		"UNEXPECTED_CHAR", "SQL_END_SCOL", "SQL_NL", "SQL_STMT",
+		"NOT_NULL_", "PRIMARY_", "DEFAULT_", "UNIQUE_", "INDEX_", "FOREIGN_KEY_",
+		"REFERENCES_", "ACTION_ON_UPDATE_", "ACTION_ON_DELETE_", "ACTION_DO_",
+		"ACTION_DO_NO_ACTION_", "ACTION_DO_CASCADE_", "ACTION_DO_SET_NULL_",
+		"ACTION_DO_SET_DEFAULT_", "ACTION_DO_RESTRICT_", "SELECT_", "INSERT_",
+		"UPDATE_", "DELETE_", "WITH_", "IDENTIFIER", "INDEX_NAME", "ACTION_PARAMETER",
+		"UNSIGNED_NUMBER_LITERAL", "SIGNED_NUMBER_LITERAL", "STRING_LITERAL",
+		"WS", "TERMINATOR", "BLOCK_COMMENT", "LINE_COMMENT", "UNEXPECTED_CHAR",
+		"SQL_END_SCOL", "SQL_NL", "SQL_STMT",
 	}
 	staticData.ruleNames = []string{
 		"source_unit", "database_directive", "table_decl", "column_def", "column_def_list",
 		"column_type", "column_constraint", "literal_value", "number_value",
-		"index_def", "index_def_list", "action_decl", "action_param_list", "database_name",
+		"index_def", "index_def_list", "foreign_key_action", "foreign_key_def",
+		"foreign_key_def_list", "action_decl", "action_param_list", "database_name",
 		"table_name", "action_name", "column_name", "column_name_list", "index_name",
 		"sql_keywords", "sql_stmt", "action_stmt", "action_stmt_list",
 	}
 	staticData.predictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 45, 193, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 55, 230, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 2, 19, 7, 19, 2, 20, 7, 20, 2,
-		21, 7, 21, 2, 22, 7, 22, 1, 0, 1, 0, 1, 0, 1, 0, 5, 0, 51, 8, 0, 10, 0,
-		12, 0, 54, 9, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 2, 1, 2, 3, 2, 67, 8, 2, 1, 2, 3, 2, 70, 8, 2, 1, 2, 1, 2, 1, 3, 1,
-		3, 1, 3, 5, 3, 77, 8, 3, 10, 3, 12, 3, 80, 9, 3, 1, 4, 1, 4, 1, 4, 5, 4,
-		85, 8, 4, 10, 4, 12, 4, 88, 9, 4, 1, 5, 1, 5, 1, 6, 1, 6, 1, 6, 1, 6, 1,
-		6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1,
-		6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 3,
-		6, 120, 8, 6, 1, 7, 1, 7, 1, 8, 1, 8, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1,
-		9, 1, 10, 1, 10, 1, 10, 5, 10, 135, 8, 10, 10, 10, 12, 10, 138, 9, 10,
-		1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1,
-		12, 3, 12, 151, 8, 12, 1, 12, 1, 12, 5, 12, 155, 8, 12, 10, 12, 12, 12,
-		158, 9, 12, 1, 13, 1, 13, 1, 14, 1, 14, 1, 15, 1, 15, 1, 16, 1, 16, 1,
-		17, 1, 17, 1, 17, 5, 17, 171, 8, 17, 10, 17, 12, 17, 174, 9, 17, 1, 18,
-		1, 18, 1, 19, 1, 19, 1, 20, 1, 20, 1, 20, 1, 20, 1, 21, 1, 21, 1, 22, 1,
-		22, 5, 22, 188, 8, 22, 10, 22, 12, 22, 191, 9, 22, 1, 22, 0, 0, 23, 0,
-		2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
-		40, 42, 44, 0, 5, 1, 0, 16, 17, 2, 0, 35, 35, 37, 37, 2, 0, 23, 23, 25,
-		26, 1, 0, 14, 15, 1, 0, 27, 31, 187, 0, 46, 1, 0, 0, 0, 2, 57, 1, 0, 0,
-		0, 4, 60, 1, 0, 0, 0, 6, 73, 1, 0, 0, 0, 8, 81, 1, 0, 0, 0, 10, 89, 1,
-		0, 0, 0, 12, 119, 1, 0, 0, 0, 14, 121, 1, 0, 0, 0, 16, 123, 1, 0, 0, 0,
-		18, 125, 1, 0, 0, 0, 20, 131, 1, 0, 0, 0, 22, 139, 1, 0, 0, 0, 24, 150,
-		1, 0, 0, 0, 26, 159, 1, 0, 0, 0, 28, 161, 1, 0, 0, 0, 30, 163, 1, 0, 0,
-		0, 32, 165, 1, 0, 0, 0, 34, 167, 1, 0, 0, 0, 36, 175, 1, 0, 0, 0, 38, 177,
-		1, 0, 0, 0, 40, 179, 1, 0, 0, 0, 42, 183, 1, 0, 0, 0, 44, 185, 1, 0, 0,
-		0, 46, 47, 3, 2, 1, 0, 47, 52, 5, 1, 0, 0, 48, 51, 3, 4, 2, 0, 49, 51,
-		3, 22, 11, 0, 50, 48, 1, 0, 0, 0, 50, 49, 1, 0, 0, 0, 51, 54, 1, 0, 0,
-		0, 52, 50, 1, 0, 0, 0, 52, 53, 1, 0, 0, 0, 53, 55, 1, 0, 0, 0, 54, 52,
-		1, 0, 0, 0, 55, 56, 5, 0, 0, 1, 56, 1, 1, 0, 0, 0, 57, 58, 5, 11, 0, 0,
-		58, 59, 3, 26, 13, 0, 59, 3, 1, 0, 0, 0, 60, 61, 5, 12, 0, 0, 61, 62, 3,
-		28, 14, 0, 62, 63, 5, 3, 0, 0, 63, 66, 3, 8, 4, 0, 64, 65, 5, 6, 0, 0,
-		65, 67, 3, 20, 10, 0, 66, 64, 1, 0, 0, 0, 66, 67, 1, 0, 0, 0, 67, 69, 1,
-		0, 0, 0, 68, 70, 5, 6, 0, 0, 69, 68, 1, 0, 0, 0, 69, 70, 1, 0, 0, 0, 70,
-		71, 1, 0, 0, 0, 71, 72, 5, 5, 0, 0, 72, 5, 1, 0, 0, 0, 73, 74, 3, 32, 16,
-		0, 74, 78, 3, 10, 5, 0, 75, 77, 3, 12, 6, 0, 76, 75, 1, 0, 0, 0, 77, 80,
-		1, 0, 0, 0, 78, 76, 1, 0, 0, 0, 78, 79, 1, 0, 0, 0, 79, 7, 1, 0, 0, 0,
-		80, 78, 1, 0, 0, 0, 81, 86, 3, 6, 3, 0, 82, 83, 5, 6, 0, 0, 83, 85, 3,
-		6, 3, 0, 84, 82, 1, 0, 0, 0, 85, 88, 1, 0, 0, 0, 86, 84, 1, 0, 0, 0, 86,
-		87, 1, 0, 0, 0, 87, 9, 1, 0, 0, 0, 88, 86, 1, 0, 0, 0, 89, 90, 7, 0, 0,
-		0, 90, 11, 1, 0, 0, 0, 91, 120, 5, 23, 0, 0, 92, 120, 5, 22, 0, 0, 93,
-		120, 5, 25, 0, 0, 94, 95, 5, 24, 0, 0, 95, 96, 5, 2, 0, 0, 96, 97, 3, 14,
-		7, 0, 97, 98, 5, 4, 0, 0, 98, 120, 1, 0, 0, 0, 99, 100, 5, 18, 0, 0, 100,
-		101, 5, 2, 0, 0, 101, 102, 3, 16, 8, 0, 102, 103, 5, 4, 0, 0, 103, 120,
-		1, 0, 0, 0, 104, 105, 5, 19, 0, 0, 105, 106, 5, 2, 0, 0, 106, 107, 3, 16,
-		8, 0, 107, 108, 5, 4, 0, 0, 108, 120, 1, 0, 0, 0, 109, 110, 5, 20, 0, 0,
-		110, 111, 5, 2, 0, 0, 111, 112, 3, 16, 8, 0, 112, 113, 5, 4, 0, 0, 113,
-		120, 1, 0, 0, 0, 114, 115, 5, 21, 0, 0, 115, 116, 5, 2, 0, 0, 116, 117,
-		3, 16, 8, 0, 117, 118, 5, 4, 0, 0, 118, 120, 1, 0, 0, 0, 119, 91, 1, 0,
-		0, 0, 119, 92, 1, 0, 0, 0, 119, 93, 1, 0, 0, 0, 119, 94, 1, 0, 0, 0, 119,
-		99, 1, 0, 0, 0, 119, 104, 1, 0, 0, 0, 119, 109, 1, 0, 0, 0, 119, 114, 1,
-		0, 0, 0, 120, 13, 1, 0, 0, 0, 121, 122, 7, 1, 0, 0, 122, 15, 1, 0, 0, 0,
-		123, 124, 5, 35, 0, 0, 124, 17, 1, 0, 0, 0, 125, 126, 3, 36, 18, 0, 126,
-		127, 7, 2, 0, 0, 127, 128, 5, 2, 0, 0, 128, 129, 3, 34, 17, 0, 129, 130,
-		5, 4, 0, 0, 130, 19, 1, 0, 0, 0, 131, 136, 3, 18, 9, 0, 132, 133, 5, 6,
-		0, 0, 133, 135, 3, 18, 9, 0, 134, 132, 1, 0, 0, 0, 135, 138, 1, 0, 0, 0,
-		136, 134, 1, 0, 0, 0, 136, 137, 1, 0, 0, 0, 137, 21, 1, 0, 0, 0, 138, 136,
-		1, 0, 0, 0, 139, 140, 5, 13, 0, 0, 140, 141, 3, 30, 15, 0, 141, 142, 5,
-		2, 0, 0, 142, 143, 3, 24, 12, 0, 143, 144, 5, 4, 0, 0, 144, 145, 7, 3,
-		0, 0, 145, 146, 5, 3, 0, 0, 146, 147, 3, 44, 22, 0, 147, 148, 5, 5, 0,
-		0, 148, 23, 1, 0, 0, 0, 149, 151, 5, 34, 0, 0, 150, 149, 1, 0, 0, 0, 150,
-		151, 1, 0, 0, 0, 151, 156, 1, 0, 0, 0, 152, 153, 5, 6, 0, 0, 153, 155,
-		5, 34, 0, 0, 154, 152, 1, 0, 0, 0, 155, 158, 1, 0, 0, 0, 156, 154, 1, 0,
-		0, 0, 156, 157, 1, 0, 0, 0, 157, 25, 1, 0, 0, 0, 158, 156, 1, 0, 0, 0,
-		159, 160, 5, 32, 0, 0, 160, 27, 1, 0, 0, 0, 161, 162, 5, 32, 0, 0, 162,
-		29, 1, 0, 0, 0, 163, 164, 5, 32, 0, 0, 164, 31, 1, 0, 0, 0, 165, 166, 5,
-		32, 0, 0, 166, 33, 1, 0, 0, 0, 167, 172, 3, 32, 16, 0, 168, 169, 5, 6,
-		0, 0, 169, 171, 3, 32, 16, 0, 170, 168, 1, 0, 0, 0, 171, 174, 1, 0, 0,
-		0, 172, 170, 1, 0, 0, 0, 172, 173, 1, 0, 0, 0, 173, 35, 1, 0, 0, 0, 174,
-		172, 1, 0, 0, 0, 175, 176, 5, 33, 0, 0, 176, 37, 1, 0, 0, 0, 177, 178,
-		7, 4, 0, 0, 178, 39, 1, 0, 0, 0, 179, 180, 3, 38, 19, 0, 180, 181, 5, 45,
-		0, 0, 181, 182, 5, 43, 0, 0, 182, 41, 1, 0, 0, 0, 183, 184, 3, 40, 20,
-		0, 184, 43, 1, 0, 0, 0, 185, 189, 3, 42, 21, 0, 186, 188, 3, 42, 21, 0,
-		187, 186, 1, 0, 0, 0, 188, 191, 1, 0, 0, 0, 189, 187, 1, 0, 0, 0, 189,
-		190, 1, 0, 0, 0, 190, 45, 1, 0, 0, 0, 191, 189, 1, 0, 0, 0, 12, 50, 52,
-		66, 69, 78, 86, 119, 136, 150, 156, 172, 189,
+		21, 7, 21, 2, 22, 7, 22, 2, 23, 7, 23, 2, 24, 7, 24, 2, 25, 7, 25, 1, 0,
+		1, 0, 1, 0, 1, 0, 5, 0, 57, 8, 0, 10, 0, 12, 0, 60, 9, 0, 1, 0, 1, 0, 1,
+		1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 3, 2, 73, 8, 2, 1, 2,
+		1, 2, 3, 2, 77, 8, 2, 1, 2, 3, 2, 80, 8, 2, 1, 2, 1, 2, 1, 3, 1, 3, 1,
+		3, 5, 3, 87, 8, 3, 10, 3, 12, 3, 90, 9, 3, 1, 4, 1, 4, 1, 4, 5, 4, 95,
+		8, 4, 10, 4, 12, 4, 98, 9, 4, 1, 5, 1, 5, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6,
+		1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6,
+		1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 3, 6,
+		130, 8, 6, 1, 7, 1, 7, 1, 8, 1, 8, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9,
+		1, 10, 1, 10, 1, 10, 5, 10, 145, 8, 10, 10, 10, 12, 10, 148, 9, 10, 1,
+		11, 1, 11, 1, 11, 1, 11, 1, 12, 1, 12, 1, 12, 1, 12, 1, 12, 1, 12, 1, 12,
+		1, 12, 1, 12, 1, 12, 5, 12, 164, 8, 12, 10, 12, 12, 12, 167, 9, 12, 1,
+		13, 1, 13, 1, 13, 5, 13, 172, 8, 13, 10, 13, 12, 13, 175, 9, 13, 1, 14,
+		1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 15, 3,
+		15, 188, 8, 15, 1, 15, 1, 15, 5, 15, 192, 8, 15, 10, 15, 12, 15, 195, 9,
+		15, 1, 16, 1, 16, 1, 17, 1, 17, 1, 18, 1, 18, 1, 19, 1, 19, 1, 20, 1, 20,
+		1, 20, 5, 20, 208, 8, 20, 10, 20, 12, 20, 211, 9, 20, 1, 21, 1, 21, 1,
+		22, 1, 22, 1, 23, 1, 23, 1, 23, 1, 23, 1, 24, 1, 24, 1, 25, 1, 25, 5, 25,
+		225, 8, 25, 10, 25, 12, 25, 228, 9, 25, 1, 25, 0, 0, 26, 0, 2, 4, 6, 8,
+		10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44,
+		46, 48, 50, 0, 7, 1, 0, 16, 17, 2, 0, 45, 45, 47, 47, 2, 0, 23, 23, 25,
+		26, 1, 0, 29, 30, 1, 0, 32, 36, 1, 0, 14, 15, 1, 0, 37, 41, 224, 0, 52,
+		1, 0, 0, 0, 2, 63, 1, 0, 0, 0, 4, 66, 1, 0, 0, 0, 6, 83, 1, 0, 0, 0, 8,
+		91, 1, 0, 0, 0, 10, 99, 1, 0, 0, 0, 12, 129, 1, 0, 0, 0, 14, 131, 1, 0,
+		0, 0, 16, 133, 1, 0, 0, 0, 18, 135, 1, 0, 0, 0, 20, 141, 1, 0, 0, 0, 22,
+		149, 1, 0, 0, 0, 24, 153, 1, 0, 0, 0, 26, 168, 1, 0, 0, 0, 28, 176, 1,
+		0, 0, 0, 30, 187, 1, 0, 0, 0, 32, 196, 1, 0, 0, 0, 34, 198, 1, 0, 0, 0,
+		36, 200, 1, 0, 0, 0, 38, 202, 1, 0, 0, 0, 40, 204, 1, 0, 0, 0, 42, 212,
+		1, 0, 0, 0, 44, 214, 1, 0, 0, 0, 46, 216, 1, 0, 0, 0, 48, 220, 1, 0, 0,
+		0, 50, 222, 1, 0, 0, 0, 52, 53, 3, 2, 1, 0, 53, 58, 5, 1, 0, 0, 54, 57,
+		3, 4, 2, 0, 55, 57, 3, 28, 14, 0, 56, 54, 1, 0, 0, 0, 56, 55, 1, 0, 0,
+		0, 57, 60, 1, 0, 0, 0, 58, 56, 1, 0, 0, 0, 58, 59, 1, 0, 0, 0, 59, 61,
+		1, 0, 0, 0, 60, 58, 1, 0, 0, 0, 61, 62, 5, 0, 0, 1, 62, 1, 1, 0, 0, 0,
+		63, 64, 5, 11, 0, 0, 64, 65, 3, 32, 16, 0, 65, 3, 1, 0, 0, 0, 66, 67, 5,
+		12, 0, 0, 67, 68, 3, 34, 17, 0, 68, 69, 5, 3, 0, 0, 69, 72, 3, 8, 4, 0,
+		70, 71, 5, 6, 0, 0, 71, 73, 3, 20, 10, 0, 72, 70, 1, 0, 0, 0, 72, 73, 1,
+		0, 0, 0, 73, 76, 1, 0, 0, 0, 74, 75, 5, 6, 0, 0, 75, 77, 3, 26, 13, 0,
+		76, 74, 1, 0, 0, 0, 76, 77, 1, 0, 0, 0, 77, 79, 1, 0, 0, 0, 78, 80, 5,
+		6, 0, 0, 79, 78, 1, 0, 0, 0, 79, 80, 1, 0, 0, 0, 80, 81, 1, 0, 0, 0, 81,
+		82, 5, 5, 0, 0, 82, 5, 1, 0, 0, 0, 83, 84, 3, 38, 19, 0, 84, 88, 3, 10,
+		5, 0, 85, 87, 3, 12, 6, 0, 86, 85, 1, 0, 0, 0, 87, 90, 1, 0, 0, 0, 88,
+		86, 1, 0, 0, 0, 88, 89, 1, 0, 0, 0, 89, 7, 1, 0, 0, 0, 90, 88, 1, 0, 0,
+		0, 91, 96, 3, 6, 3, 0, 92, 93, 5, 6, 0, 0, 93, 95, 3, 6, 3, 0, 94, 92,
+		1, 0, 0, 0, 95, 98, 1, 0, 0, 0, 96, 94, 1, 0, 0, 0, 96, 97, 1, 0, 0, 0,
+		97, 9, 1, 0, 0, 0, 98, 96, 1, 0, 0, 0, 99, 100, 7, 0, 0, 0, 100, 11, 1,
+		0, 0, 0, 101, 130, 5, 23, 0, 0, 102, 130, 5, 22, 0, 0, 103, 130, 5, 25,
+		0, 0, 104, 105, 5, 24, 0, 0, 105, 106, 5, 2, 0, 0, 106, 107, 3, 14, 7,
+		0, 107, 108, 5, 4, 0, 0, 108, 130, 1, 0, 0, 0, 109, 110, 5, 18, 0, 0, 110,
+		111, 5, 2, 0, 0, 111, 112, 3, 16, 8, 0, 112, 113, 5, 4, 0, 0, 113, 130,
+		1, 0, 0, 0, 114, 115, 5, 19, 0, 0, 115, 116, 5, 2, 0, 0, 116, 117, 3, 16,
+		8, 0, 117, 118, 5, 4, 0, 0, 118, 130, 1, 0, 0, 0, 119, 120, 5, 20, 0, 0,
+		120, 121, 5, 2, 0, 0, 121, 122, 3, 16, 8, 0, 122, 123, 5, 4, 0, 0, 123,
+		130, 1, 0, 0, 0, 124, 125, 5, 21, 0, 0, 125, 126, 5, 2, 0, 0, 126, 127,
+		3, 16, 8, 0, 127, 128, 5, 4, 0, 0, 128, 130, 1, 0, 0, 0, 129, 101, 1, 0,
+		0, 0, 129, 102, 1, 0, 0, 0, 129, 103, 1, 0, 0, 0, 129, 104, 1, 0, 0, 0,
+		129, 109, 1, 0, 0, 0, 129, 114, 1, 0, 0, 0, 129, 119, 1, 0, 0, 0, 129,
+		124, 1, 0, 0, 0, 130, 13, 1, 0, 0, 0, 131, 132, 7, 1, 0, 0, 132, 15, 1,
+		0, 0, 0, 133, 134, 5, 45, 0, 0, 134, 17, 1, 0, 0, 0, 135, 136, 3, 42, 21,
+		0, 136, 137, 7, 2, 0, 0, 137, 138, 5, 2, 0, 0, 138, 139, 3, 40, 20, 0,
+		139, 140, 5, 4, 0, 0, 140, 19, 1, 0, 0, 0, 141, 146, 3, 18, 9, 0, 142,
+		143, 5, 6, 0, 0, 143, 145, 3, 18, 9, 0, 144, 142, 1, 0, 0, 0, 145, 148,
+		1, 0, 0, 0, 146, 144, 1, 0, 0, 0, 146, 147, 1, 0, 0, 0, 147, 21, 1, 0,
+		0, 0, 148, 146, 1, 0, 0, 0, 149, 150, 7, 3, 0, 0, 150, 151, 5, 31, 0, 0,
+		151, 152, 7, 4, 0, 0, 152, 23, 1, 0, 0, 0, 153, 154, 5, 27, 0, 0, 154,
+		155, 5, 2, 0, 0, 155, 156, 3, 40, 20, 0, 156, 157, 5, 4, 0, 0, 157, 158,
+		5, 28, 0, 0, 158, 159, 3, 34, 17, 0, 159, 160, 5, 2, 0, 0, 160, 161, 3,
+		40, 20, 0, 161, 165, 5, 4, 0, 0, 162, 164, 3, 22, 11, 0, 163, 162, 1, 0,
+		0, 0, 164, 167, 1, 0, 0, 0, 165, 163, 1, 0, 0, 0, 165, 166, 1, 0, 0, 0,
+		166, 25, 1, 0, 0, 0, 167, 165, 1, 0, 0, 0, 168, 173, 3, 24, 12, 0, 169,
+		170, 5, 6, 0, 0, 170, 172, 3, 24, 12, 0, 171, 169, 1, 0, 0, 0, 172, 175,
+		1, 0, 0, 0, 173, 171, 1, 0, 0, 0, 173, 174, 1, 0, 0, 0, 174, 27, 1, 0,
+		0, 0, 175, 173, 1, 0, 0, 0, 176, 177, 5, 13, 0, 0, 177, 178, 3, 36, 18,
+		0, 178, 179, 5, 2, 0, 0, 179, 180, 3, 30, 15, 0, 180, 181, 5, 4, 0, 0,
+		181, 182, 7, 5, 0, 0, 182, 183, 5, 3, 0, 0, 183, 184, 3, 50, 25, 0, 184,
+		185, 5, 5, 0, 0, 185, 29, 1, 0, 0, 0, 186, 188, 5, 44, 0, 0, 187, 186,
+		1, 0, 0, 0, 187, 188, 1, 0, 0, 0, 188, 193, 1, 0, 0, 0, 189, 190, 5, 6,
+		0, 0, 190, 192, 5, 44, 0, 0, 191, 189, 1, 0, 0, 0, 192, 195, 1, 0, 0, 0,
+		193, 191, 1, 0, 0, 0, 193, 194, 1, 0, 0, 0, 194, 31, 1, 0, 0, 0, 195, 193,
+		1, 0, 0, 0, 196, 197, 5, 42, 0, 0, 197, 33, 1, 0, 0, 0, 198, 199, 5, 42,
+		0, 0, 199, 35, 1, 0, 0, 0, 200, 201, 5, 42, 0, 0, 201, 37, 1, 0, 0, 0,
+		202, 203, 5, 42, 0, 0, 203, 39, 1, 0, 0, 0, 204, 209, 3, 38, 19, 0, 205,
+		206, 5, 6, 0, 0, 206, 208, 3, 38, 19, 0, 207, 205, 1, 0, 0, 0, 208, 211,
+		1, 0, 0, 0, 209, 207, 1, 0, 0, 0, 209, 210, 1, 0, 0, 0, 210, 41, 1, 0,
+		0, 0, 211, 209, 1, 0, 0, 0, 212, 213, 5, 43, 0, 0, 213, 43, 1, 0, 0, 0,
+		214, 215, 7, 6, 0, 0, 215, 45, 1, 0, 0, 0, 216, 217, 3, 44, 22, 0, 217,
+		218, 5, 55, 0, 0, 218, 219, 5, 53, 0, 0, 219, 47, 1, 0, 0, 0, 220, 221,
+		3, 46, 23, 0, 221, 49, 1, 0, 0, 0, 222, 226, 3, 48, 24, 0, 223, 225, 3,
+		48, 24, 0, 224, 223, 1, 0, 0, 0, 225, 228, 1, 0, 0, 0, 226, 224, 1, 0,
+		0, 0, 226, 227, 1, 0, 0, 0, 227, 51, 1, 0, 0, 0, 228, 226, 1, 0, 0, 0,
+		15, 56, 58, 72, 76, 79, 88, 96, 129, 146, 165, 173, 187, 193, 209, 226,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -198,52 +220,65 @@ const (
 	KuneiformParserDEFAULT_                = 24
 	KuneiformParserUNIQUE_                 = 25
 	KuneiformParserINDEX_                  = 26
-	KuneiformParserSELECT_                 = 27
-	KuneiformParserINSERT_                 = 28
-	KuneiformParserUPDATE_                 = 29
-	KuneiformParserDELETE_                 = 30
-	KuneiformParserWITH_                   = 31
-	KuneiformParserIDENTIFIER              = 32
-	KuneiformParserINDEX_NAME              = 33
-	KuneiformParserACTION_PARAMETER        = 34
-	KuneiformParserUNSIGNED_NUMBER_LITERAL = 35
-	KuneiformParserSIGNED_NUMBER_LITERAL   = 36
-	KuneiformParserSTRING_LITERAL          = 37
-	KuneiformParserWS                      = 38
-	KuneiformParserTERMINATOR              = 39
-	KuneiformParserBLOCK_COMMENT           = 40
-	KuneiformParserLINE_COMMENT            = 41
-	KuneiformParserUNEXPECTED_CHAR         = 42
-	KuneiformParserSQL_END_SCOL            = 43
-	KuneiformParserSQL_NL                  = 44
-	KuneiformParserSQL_STMT                = 45
+	KuneiformParserFOREIGN_KEY_            = 27
+	KuneiformParserREFERENCES_             = 28
+	KuneiformParserACTION_ON_UPDATE_       = 29
+	KuneiformParserACTION_ON_DELETE_       = 30
+	KuneiformParserACTION_DO_              = 31
+	KuneiformParserACTION_DO_NO_ACTION_    = 32
+	KuneiformParserACTION_DO_CASCADE_      = 33
+	KuneiformParserACTION_DO_SET_NULL_     = 34
+	KuneiformParserACTION_DO_SET_DEFAULT_  = 35
+	KuneiformParserACTION_DO_RESTRICT_     = 36
+	KuneiformParserSELECT_                 = 37
+	KuneiformParserINSERT_                 = 38
+	KuneiformParserUPDATE_                 = 39
+	KuneiformParserDELETE_                 = 40
+	KuneiformParserWITH_                   = 41
+	KuneiformParserIDENTIFIER              = 42
+	KuneiformParserINDEX_NAME              = 43
+	KuneiformParserACTION_PARAMETER        = 44
+	KuneiformParserUNSIGNED_NUMBER_LITERAL = 45
+	KuneiformParserSIGNED_NUMBER_LITERAL   = 46
+	KuneiformParserSTRING_LITERAL          = 47
+	KuneiformParserWS                      = 48
+	KuneiformParserTERMINATOR              = 49
+	KuneiformParserBLOCK_COMMENT           = 50
+	KuneiformParserLINE_COMMENT            = 51
+	KuneiformParserUNEXPECTED_CHAR         = 52
+	KuneiformParserSQL_END_SCOL            = 53
+	KuneiformParserSQL_NL                  = 54
+	KuneiformParserSQL_STMT                = 55
 )
 
 // KuneiformParser rules.
 const (
-	KuneiformParserRULE_source_unit        = 0
-	KuneiformParserRULE_database_directive = 1
-	KuneiformParserRULE_table_decl         = 2
-	KuneiformParserRULE_column_def         = 3
-	KuneiformParserRULE_column_def_list    = 4
-	KuneiformParserRULE_column_type        = 5
-	KuneiformParserRULE_column_constraint  = 6
-	KuneiformParserRULE_literal_value      = 7
-	KuneiformParserRULE_number_value       = 8
-	KuneiformParserRULE_index_def          = 9
-	KuneiformParserRULE_index_def_list     = 10
-	KuneiformParserRULE_action_decl        = 11
-	KuneiformParserRULE_action_param_list  = 12
-	KuneiformParserRULE_database_name      = 13
-	KuneiformParserRULE_table_name         = 14
-	KuneiformParserRULE_action_name        = 15
-	KuneiformParserRULE_column_name        = 16
-	KuneiformParserRULE_column_name_list   = 17
-	KuneiformParserRULE_index_name         = 18
-	KuneiformParserRULE_sql_keywords       = 19
-	KuneiformParserRULE_sql_stmt           = 20
-	KuneiformParserRULE_action_stmt        = 21
-	KuneiformParserRULE_action_stmt_list   = 22
+	KuneiformParserRULE_source_unit          = 0
+	KuneiformParserRULE_database_directive   = 1
+	KuneiformParserRULE_table_decl           = 2
+	KuneiformParserRULE_column_def           = 3
+	KuneiformParserRULE_column_def_list      = 4
+	KuneiformParserRULE_column_type          = 5
+	KuneiformParserRULE_column_constraint    = 6
+	KuneiformParserRULE_literal_value        = 7
+	KuneiformParserRULE_number_value         = 8
+	KuneiformParserRULE_index_def            = 9
+	KuneiformParserRULE_index_def_list       = 10
+	KuneiformParserRULE_foreign_key_action   = 11
+	KuneiformParserRULE_foreign_key_def      = 12
+	KuneiformParserRULE_foreign_key_def_list = 13
+	KuneiformParserRULE_action_decl          = 14
+	KuneiformParserRULE_action_param_list    = 15
+	KuneiformParserRULE_database_name        = 16
+	KuneiformParserRULE_table_name           = 17
+	KuneiformParserRULE_action_name          = 18
+	KuneiformParserRULE_column_name          = 19
+	KuneiformParserRULE_column_name_list     = 20
+	KuneiformParserRULE_index_name           = 21
+	KuneiformParserRULE_sql_keywords         = 22
+	KuneiformParserRULE_sql_stmt             = 23
+	KuneiformParserRULE_action_stmt          = 24
+	KuneiformParserRULE_action_stmt_list     = 25
 )
 
 // ISource_unitContext is an interface to support dynamic dispatch.
@@ -443,31 +478,31 @@ func (p *KuneiformParser) Source_unit() (localctx ISource_unitContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(46)
+		p.SetState(52)
 		p.Database_directive()
 	}
 	{
-		p.SetState(47)
+		p.SetState(53)
 		p.Match(KuneiformParserSCOL)
 	}
-	p.SetState(52)
+	p.SetState(58)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == KuneiformParserTABLE_ || _la == KuneiformParserACTION_ {
-		p.SetState(50)
+		p.SetState(56)
 		p.GetErrorHandler().Sync(p)
 
 		switch p.GetTokenStream().LA(1) {
 		case KuneiformParserTABLE_:
 			{
-				p.SetState(48)
+				p.SetState(54)
 				p.Table_decl()
 			}
 
 		case KuneiformParserACTION_:
 			{
-				p.SetState(49)
+				p.SetState(55)
 				p.Action_decl()
 			}
 
@@ -475,12 +510,12 @@ func (p *KuneiformParser) Source_unit() (localctx ISource_unitContext) {
 			panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		}
 
-		p.SetState(54)
+		p.SetState(60)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(55)
+		p.SetState(61)
 		p.Match(KuneiformParserEOF)
 	}
 
@@ -592,11 +627,11 @@ func (p *KuneiformParser) Database_directive() (localctx IDatabase_directiveCont
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(57)
+		p.SetState(63)
 		p.Match(KuneiformParserDATABASE_)
 	}
 	{
-		p.SetState(58)
+		p.SetState(64)
 		p.Database_name()
 	}
 
@@ -619,6 +654,7 @@ type ITable_declContext interface {
 	AllCOMMA() []antlr.TerminalNode
 	COMMA(i int) antlr.TerminalNode
 	Index_def_list() IIndex_def_listContext
+	Foreign_key_def_list() IForeign_key_def_listContext
 
 	// IsTable_declContext differentiates from other interfaces.
 	IsTable_declContext()
@@ -719,6 +755,22 @@ func (s *Table_declContext) Index_def_list() IIndex_def_listContext {
 	return t.(IIndex_def_listContext)
 }
 
+func (s *Table_declContext) Foreign_key_def_list() IForeign_key_def_listContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IForeign_key_def_listContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IForeign_key_def_listContext)
+}
+
 func (s *Table_declContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -763,48 +815,62 @@ func (p *KuneiformParser) Table_decl() (localctx ITable_declContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(60)
+		p.SetState(66)
 		p.Match(KuneiformParserTABLE_)
 	}
 	{
-		p.SetState(61)
+		p.SetState(67)
 		p.Table_name()
 	}
 	{
-		p.SetState(62)
+		p.SetState(68)
 		p.Match(KuneiformParserL_BRACE)
 	}
 	{
-		p.SetState(63)
+		p.SetState(69)
 		p.Column_def_list()
 	}
-	p.SetState(66)
+	p.SetState(72)
 	p.GetErrorHandler().Sync(p)
 
 	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext()) == 1 {
 		{
-			p.SetState(64)
+			p.SetState(70)
 			p.Match(KuneiformParserCOMMA)
 		}
 		{
-			p.SetState(65)
+			p.SetState(71)
 			p.Index_def_list()
 		}
 
 	}
-	p.SetState(69)
+	p.SetState(76)
+	p.GetErrorHandler().Sync(p)
+
+	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(74)
+			p.Match(KuneiformParserCOMMA)
+		}
+		{
+			p.SetState(75)
+			p.Foreign_key_def_list()
+		}
+
+	}
+	p.SetState(79)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == KuneiformParserCOMMA {
 		{
-			p.SetState(68)
+			p.SetState(78)
 			p.Match(KuneiformParserCOMMA)
 		}
 
 	}
 	{
-		p.SetState(71)
+		p.SetState(81)
 		p.Match(KuneiformParserR_BRACE)
 	}
 
@@ -972,24 +1038,24 @@ func (p *KuneiformParser) Column_def() (localctx IColumn_defContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(73)
+		p.SetState(83)
 		p.Column_name()
 	}
 	{
-		p.SetState(74)
+		p.SetState(84)
 		p.Column_type()
 	}
-	p.SetState(78)
+	p.SetState(88)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&66846720) != 0 {
 		{
-			p.SetState(75)
+			p.SetState(85)
 			p.Column_constraint()
 		}
 
-		p.SetState(80)
+		p.SetState(90)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1135,28 +1201,28 @@ func (p *KuneiformParser) Column_def_list() (localctx IColumn_def_listContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(81)
+		p.SetState(91)
 		p.Column_def()
 	}
-	p.SetState(86)
+	p.SetState(96)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 5, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 6, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
-				p.SetState(82)
+				p.SetState(92)
 				p.Match(KuneiformParserCOMMA)
 			}
 			{
-				p.SetState(83)
+				p.SetState(93)
 				p.Column_def()
 			}
 
 		}
-		p.SetState(88)
+		p.SetState(98)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 5, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 6, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -1256,7 +1322,7 @@ func (p *KuneiformParser) Column_type() (localctx IColumn_typeContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(89)
+		p.SetState(99)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == KuneiformParserINT_ || _la == KuneiformParserTEXT_) {
@@ -1435,74 +1501,36 @@ func (p *KuneiformParser) Column_constraint() (localctx IColumn_constraintContex
 		}
 	}()
 
-	p.SetState(119)
+	p.SetState(129)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case KuneiformParserPRIMARY_:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(91)
+			p.SetState(101)
 			p.Match(KuneiformParserPRIMARY_)
 		}
 
 	case KuneiformParserNOT_NULL_:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(92)
+			p.SetState(102)
 			p.Match(KuneiformParserNOT_NULL_)
 		}
 
 	case KuneiformParserUNIQUE_:
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(93)
+			p.SetState(103)
 			p.Match(KuneiformParserUNIQUE_)
 		}
 
 	case KuneiformParserDEFAULT_:
 		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(94)
-			p.Match(KuneiformParserDEFAULT_)
-		}
-		{
-			p.SetState(95)
-			p.Match(KuneiformParserL_PAREN)
-		}
-		{
-			p.SetState(96)
-			p.Literal_value()
-		}
-		{
-			p.SetState(97)
-			p.Match(KuneiformParserR_PAREN)
-		}
-
-	case KuneiformParserMIN_:
-		p.EnterOuterAlt(localctx, 5)
-		{
-			p.SetState(99)
-			p.Match(KuneiformParserMIN_)
-		}
-		{
-			p.SetState(100)
-			p.Match(KuneiformParserL_PAREN)
-		}
-		{
-			p.SetState(101)
-			p.Number_value()
-		}
-		{
-			p.SetState(102)
-			p.Match(KuneiformParserR_PAREN)
-		}
-
-	case KuneiformParserMAX_:
-		p.EnterOuterAlt(localctx, 6)
-		{
 			p.SetState(104)
-			p.Match(KuneiformParserMAX_)
+			p.Match(KuneiformParserDEFAULT_)
 		}
 		{
 			p.SetState(105)
@@ -1510,18 +1538,18 @@ func (p *KuneiformParser) Column_constraint() (localctx IColumn_constraintContex
 		}
 		{
 			p.SetState(106)
-			p.Number_value()
+			p.Literal_value()
 		}
 		{
 			p.SetState(107)
 			p.Match(KuneiformParserR_PAREN)
 		}
 
-	case KuneiformParserMIN_LEN_:
-		p.EnterOuterAlt(localctx, 7)
+	case KuneiformParserMIN_:
+		p.EnterOuterAlt(localctx, 5)
 		{
 			p.SetState(109)
-			p.Match(KuneiformParserMIN_LEN_)
+			p.Match(KuneiformParserMIN_)
 		}
 		{
 			p.SetState(110)
@@ -1536,11 +1564,11 @@ func (p *KuneiformParser) Column_constraint() (localctx IColumn_constraintContex
 			p.Match(KuneiformParserR_PAREN)
 		}
 
-	case KuneiformParserMAX_LEN_:
-		p.EnterOuterAlt(localctx, 8)
+	case KuneiformParserMAX_:
+		p.EnterOuterAlt(localctx, 6)
 		{
 			p.SetState(114)
-			p.Match(KuneiformParserMAX_LEN_)
+			p.Match(KuneiformParserMAX_)
 		}
 		{
 			p.SetState(115)
@@ -1552,6 +1580,44 @@ func (p *KuneiformParser) Column_constraint() (localctx IColumn_constraintContex
 		}
 		{
 			p.SetState(117)
+			p.Match(KuneiformParserR_PAREN)
+		}
+
+	case KuneiformParserMIN_LEN_:
+		p.EnterOuterAlt(localctx, 7)
+		{
+			p.SetState(119)
+			p.Match(KuneiformParserMIN_LEN_)
+		}
+		{
+			p.SetState(120)
+			p.Match(KuneiformParserL_PAREN)
+		}
+		{
+			p.SetState(121)
+			p.Number_value()
+		}
+		{
+			p.SetState(122)
+			p.Match(KuneiformParserR_PAREN)
+		}
+
+	case KuneiformParserMAX_LEN_:
+		p.EnterOuterAlt(localctx, 8)
+		{
+			p.SetState(124)
+			p.Match(KuneiformParserMAX_LEN_)
+		}
+		{
+			p.SetState(125)
+			p.Match(KuneiformParserL_PAREN)
+		}
+		{
+			p.SetState(126)
+			p.Number_value()
+		}
+		{
+			p.SetState(127)
 			p.Match(KuneiformParserR_PAREN)
 		}
 
@@ -1656,7 +1722,7 @@ func (p *KuneiformParser) Literal_value() (localctx ILiteral_valueContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(121)
+		p.SetState(131)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == KuneiformParserUNSIGNED_NUMBER_LITERAL || _la == KuneiformParserSTRING_LITERAL) {
@@ -1758,7 +1824,7 @@ func (p *KuneiformParser) Number_value() (localctx INumber_valueContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(123)
+		p.SetState(133)
 		p.Match(KuneiformParserUNSIGNED_NUMBER_LITERAL)
 	}
 
@@ -1908,11 +1974,11 @@ func (p *KuneiformParser) Index_def() (localctx IIndex_defContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(125)
+		p.SetState(135)
 		p.Index_name()
 	}
 	{
-		p.SetState(126)
+		p.SetState(136)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&109051904) != 0) {
@@ -1923,15 +1989,15 @@ func (p *KuneiformParser) Index_def() (localctx IIndex_defContext) {
 		}
 	}
 	{
-		p.SetState(127)
+		p.SetState(137)
 		p.Match(KuneiformParserL_PAREN)
 	}
 	{
-		p.SetState(128)
+		p.SetState(138)
 		p.Column_name_list()
 	}
 	{
-		p.SetState(129)
+		p.SetState(139)
 		p.Match(KuneiformParserR_PAREN)
 	}
 
@@ -2076,28 +2142,616 @@ func (p *KuneiformParser) Index_def_list() (localctx IIndex_def_listContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(131)
+		p.SetState(141)
 		p.Index_def()
 	}
-	p.SetState(136)
+	p.SetState(146)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 7, p.GetParserRuleContext())
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 8, p.GetParserRuleContext())
 
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
-				p.SetState(132)
+				p.SetState(142)
 				p.Match(KuneiformParserCOMMA)
 			}
 			{
-				p.SetState(133)
+				p.SetState(143)
 				p.Index_def()
 			}
 
 		}
-		p.SetState(138)
+		p.SetState(148)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 7, p.GetParserRuleContext())
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 8, p.GetParserRuleContext())
+	}
+
+	return localctx
+}
+
+// IForeign_key_actionContext is an interface to support dynamic dispatch.
+type IForeign_key_actionContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	ACTION_DO_() antlr.TerminalNode
+	ACTION_ON_UPDATE_() antlr.TerminalNode
+	ACTION_ON_DELETE_() antlr.TerminalNode
+	ACTION_DO_NO_ACTION_() antlr.TerminalNode
+	ACTION_DO_RESTRICT_() antlr.TerminalNode
+	ACTION_DO_SET_NULL_() antlr.TerminalNode
+	ACTION_DO_SET_DEFAULT_() antlr.TerminalNode
+	ACTION_DO_CASCADE_() antlr.TerminalNode
+
+	// IsForeign_key_actionContext differentiates from other interfaces.
+	IsForeign_key_actionContext()
+}
+
+type Foreign_key_actionContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyForeign_key_actionContext() *Foreign_key_actionContext {
+	var p = new(Foreign_key_actionContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = KuneiformParserRULE_foreign_key_action
+	return p
+}
+
+func (*Foreign_key_actionContext) IsForeign_key_actionContext() {}
+
+func NewForeign_key_actionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Foreign_key_actionContext {
+	var p = new(Foreign_key_actionContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = KuneiformParserRULE_foreign_key_action
+
+	return p
+}
+
+func (s *Foreign_key_actionContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *Foreign_key_actionContext) ACTION_DO_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_DO_, 0)
+}
+
+func (s *Foreign_key_actionContext) ACTION_ON_UPDATE_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_ON_UPDATE_, 0)
+}
+
+func (s *Foreign_key_actionContext) ACTION_ON_DELETE_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_ON_DELETE_, 0)
+}
+
+func (s *Foreign_key_actionContext) ACTION_DO_NO_ACTION_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_DO_NO_ACTION_, 0)
+}
+
+func (s *Foreign_key_actionContext) ACTION_DO_RESTRICT_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_DO_RESTRICT_, 0)
+}
+
+func (s *Foreign_key_actionContext) ACTION_DO_SET_NULL_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_DO_SET_NULL_, 0)
+}
+
+func (s *Foreign_key_actionContext) ACTION_DO_SET_DEFAULT_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_DO_SET_DEFAULT_, 0)
+}
+
+func (s *Foreign_key_actionContext) ACTION_DO_CASCADE_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserACTION_DO_CASCADE_, 0)
+}
+
+func (s *Foreign_key_actionContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Foreign_key_actionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Foreign_key_actionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case KuneiformParserVisitor:
+		return t.VisitForeign_key_action(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *KuneiformParser) Foreign_key_action() (localctx IForeign_key_actionContext) {
+	this := p
+	_ = this
+
+	localctx = NewForeign_key_actionContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 22, KuneiformParserRULE_foreign_key_action)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(149)
+		_la = p.GetTokenStream().LA(1)
+
+		if !(_la == KuneiformParserACTION_ON_UPDATE_ || _la == KuneiformParserACTION_ON_DELETE_) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
+	}
+	{
+		p.SetState(150)
+		p.Match(KuneiformParserACTION_DO_)
+	}
+	{
+		p.SetState(151)
+		_la = p.GetTokenStream().LA(1)
+
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&133143986176) != 0) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
+	}
+
+	return localctx
+}
+
+// IForeign_key_defContext is an interface to support dynamic dispatch.
+type IForeign_key_defContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	FOREIGN_KEY_() antlr.TerminalNode
+	AllL_PAREN() []antlr.TerminalNode
+	L_PAREN(i int) antlr.TerminalNode
+	AllColumn_name_list() []IColumn_name_listContext
+	Column_name_list(i int) IColumn_name_listContext
+	AllR_PAREN() []antlr.TerminalNode
+	R_PAREN(i int) antlr.TerminalNode
+	REFERENCES_() antlr.TerminalNode
+	Table_name() ITable_nameContext
+	AllForeign_key_action() []IForeign_key_actionContext
+	Foreign_key_action(i int) IForeign_key_actionContext
+
+	// IsForeign_key_defContext differentiates from other interfaces.
+	IsForeign_key_defContext()
+}
+
+type Foreign_key_defContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyForeign_key_defContext() *Foreign_key_defContext {
+	var p = new(Foreign_key_defContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = KuneiformParserRULE_foreign_key_def
+	return p
+}
+
+func (*Foreign_key_defContext) IsForeign_key_defContext() {}
+
+func NewForeign_key_defContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Foreign_key_defContext {
+	var p = new(Foreign_key_defContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = KuneiformParserRULE_foreign_key_def
+
+	return p
+}
+
+func (s *Foreign_key_defContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *Foreign_key_defContext) FOREIGN_KEY_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserFOREIGN_KEY_, 0)
+}
+
+func (s *Foreign_key_defContext) AllL_PAREN() []antlr.TerminalNode {
+	return s.GetTokens(KuneiformParserL_PAREN)
+}
+
+func (s *Foreign_key_defContext) L_PAREN(i int) antlr.TerminalNode {
+	return s.GetToken(KuneiformParserL_PAREN, i)
+}
+
+func (s *Foreign_key_defContext) AllColumn_name_list() []IColumn_name_listContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IColumn_name_listContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IColumn_name_listContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IColumn_name_listContext); ok {
+			tst[i] = t.(IColumn_name_listContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *Foreign_key_defContext) Column_name_list(i int) IColumn_name_listContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IColumn_name_listContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IColumn_name_listContext)
+}
+
+func (s *Foreign_key_defContext) AllR_PAREN() []antlr.TerminalNode {
+	return s.GetTokens(KuneiformParserR_PAREN)
+}
+
+func (s *Foreign_key_defContext) R_PAREN(i int) antlr.TerminalNode {
+	return s.GetToken(KuneiformParserR_PAREN, i)
+}
+
+func (s *Foreign_key_defContext) REFERENCES_() antlr.TerminalNode {
+	return s.GetToken(KuneiformParserREFERENCES_, 0)
+}
+
+func (s *Foreign_key_defContext) Table_name() ITable_nameContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ITable_nameContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITable_nameContext)
+}
+
+func (s *Foreign_key_defContext) AllForeign_key_action() []IForeign_key_actionContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IForeign_key_actionContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IForeign_key_actionContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IForeign_key_actionContext); ok {
+			tst[i] = t.(IForeign_key_actionContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *Foreign_key_defContext) Foreign_key_action(i int) IForeign_key_actionContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IForeign_key_actionContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IForeign_key_actionContext)
+}
+
+func (s *Foreign_key_defContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Foreign_key_defContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Foreign_key_defContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case KuneiformParserVisitor:
+		return t.VisitForeign_key_def(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *KuneiformParser) Foreign_key_def() (localctx IForeign_key_defContext) {
+	this := p
+	_ = this
+
+	localctx = NewForeign_key_defContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 24, KuneiformParserRULE_foreign_key_def)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(153)
+		p.Match(KuneiformParserFOREIGN_KEY_)
+	}
+	{
+		p.SetState(154)
+		p.Match(KuneiformParserL_PAREN)
+	}
+	{
+		p.SetState(155)
+		p.Column_name_list()
+	}
+	{
+		p.SetState(156)
+		p.Match(KuneiformParserR_PAREN)
+	}
+	{
+		p.SetState(157)
+		p.Match(KuneiformParserREFERENCES_)
+	}
+	{
+		p.SetState(158)
+		p.Table_name()
+	}
+	{
+		p.SetState(159)
+		p.Match(KuneiformParserL_PAREN)
+	}
+	{
+		p.SetState(160)
+		p.Column_name_list()
+	}
+	{
+		p.SetState(161)
+		p.Match(KuneiformParserR_PAREN)
+	}
+	p.SetState(165)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == KuneiformParserACTION_ON_UPDATE_ || _la == KuneiformParserACTION_ON_DELETE_ {
+		{
+			p.SetState(162)
+			p.Foreign_key_action()
+		}
+
+		p.SetState(167)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+
+	return localctx
+}
+
+// IForeign_key_def_listContext is an interface to support dynamic dispatch.
+type IForeign_key_def_listContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllForeign_key_def() []IForeign_key_defContext
+	Foreign_key_def(i int) IForeign_key_defContext
+	AllCOMMA() []antlr.TerminalNode
+	COMMA(i int) antlr.TerminalNode
+
+	// IsForeign_key_def_listContext differentiates from other interfaces.
+	IsForeign_key_def_listContext()
+}
+
+type Foreign_key_def_listContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyForeign_key_def_listContext() *Foreign_key_def_listContext {
+	var p = new(Foreign_key_def_listContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = KuneiformParserRULE_foreign_key_def_list
+	return p
+}
+
+func (*Foreign_key_def_listContext) IsForeign_key_def_listContext() {}
+
+func NewForeign_key_def_listContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Foreign_key_def_listContext {
+	var p = new(Foreign_key_def_listContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = KuneiformParserRULE_foreign_key_def_list
+
+	return p
+}
+
+func (s *Foreign_key_def_listContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *Foreign_key_def_listContext) AllForeign_key_def() []IForeign_key_defContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IForeign_key_defContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IForeign_key_defContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IForeign_key_defContext); ok {
+			tst[i] = t.(IForeign_key_defContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *Foreign_key_def_listContext) Foreign_key_def(i int) IForeign_key_defContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IForeign_key_defContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IForeign_key_defContext)
+}
+
+func (s *Foreign_key_def_listContext) AllCOMMA() []antlr.TerminalNode {
+	return s.GetTokens(KuneiformParserCOMMA)
+}
+
+func (s *Foreign_key_def_listContext) COMMA(i int) antlr.TerminalNode {
+	return s.GetToken(KuneiformParserCOMMA, i)
+}
+
+func (s *Foreign_key_def_listContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Foreign_key_def_listContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Foreign_key_def_listContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case KuneiformParserVisitor:
+		return t.VisitForeign_key_def_list(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *KuneiformParser) Foreign_key_def_list() (localctx IForeign_key_def_listContext) {
+	this := p
+	_ = this
+
+	localctx = NewForeign_key_def_listContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 26, KuneiformParserRULE_foreign_key_def_list)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	var _alt int
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(168)
+		p.Foreign_key_def()
+	}
+	p.SetState(173)
+	p.GetErrorHandler().Sync(p)
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 10, p.GetParserRuleContext())
+
+	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
+		if _alt == 1 {
+			{
+				p.SetState(169)
+				p.Match(KuneiformParserCOMMA)
+			}
+			{
+				p.SetState(170)
+				p.Foreign_key_def()
+			}
+
+		}
+		p.SetState(175)
+		p.GetErrorHandler().Sync(p)
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 10, p.GetParserRuleContext())
 	}
 
 	return localctx
@@ -2252,7 +2906,7 @@ func (p *KuneiformParser) Action_decl() (localctx IAction_declContext) {
 	_ = this
 
 	localctx = NewAction_declContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 22, KuneiformParserRULE_action_decl)
+	p.EnterRule(localctx, 28, KuneiformParserRULE_action_decl)
 	var _la int
 
 	defer func() {
@@ -2273,27 +2927,27 @@ func (p *KuneiformParser) Action_decl() (localctx IAction_declContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(139)
+		p.SetState(176)
 		p.Match(KuneiformParserACTION_)
 	}
 	{
-		p.SetState(140)
+		p.SetState(177)
 		p.Action_name()
 	}
 	{
-		p.SetState(141)
+		p.SetState(178)
 		p.Match(KuneiformParserL_PAREN)
 	}
 	{
-		p.SetState(142)
+		p.SetState(179)
 		p.Action_param_list()
 	}
 	{
-		p.SetState(143)
+		p.SetState(180)
 		p.Match(KuneiformParserR_PAREN)
 	}
 	{
-		p.SetState(144)
+		p.SetState(181)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == KuneiformParserPUBLIC_ || _la == KuneiformParserPRIVATE_) {
@@ -2304,15 +2958,15 @@ func (p *KuneiformParser) Action_decl() (localctx IAction_declContext) {
 		}
 	}
 	{
-		p.SetState(145)
+		p.SetState(182)
 		p.Match(KuneiformParserL_BRACE)
 	}
 	{
-		p.SetState(146)
+		p.SetState(183)
 		p.Action_stmt_list()
 	}
 	{
-		p.SetState(147)
+		p.SetState(184)
 		p.Match(KuneiformParserR_BRACE)
 	}
 
@@ -2402,7 +3056,7 @@ func (p *KuneiformParser) Action_param_list() (localctx IAction_param_listContex
 	_ = this
 
 	localctx = NewAction_param_listContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 24, KuneiformParserRULE_action_param_list)
+	p.EnterRule(localctx, 30, KuneiformParserRULE_action_param_list)
 	var _la int
 
 	defer func() {
@@ -2422,32 +3076,32 @@ func (p *KuneiformParser) Action_param_list() (localctx IAction_param_listContex
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(150)
+	p.SetState(187)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == KuneiformParserACTION_PARAMETER {
 		{
-			p.SetState(149)
+			p.SetState(186)
 			p.Match(KuneiformParserACTION_PARAMETER)
 		}
 
 	}
-	p.SetState(156)
+	p.SetState(193)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == KuneiformParserCOMMA {
 		{
-			p.SetState(152)
+			p.SetState(189)
 			p.Match(KuneiformParserCOMMA)
 		}
 		{
-			p.SetState(153)
+			p.SetState(190)
 			p.Match(KuneiformParserACTION_PARAMETER)
 		}
 
-		p.SetState(158)
+		p.SetState(195)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -2523,7 +3177,7 @@ func (p *KuneiformParser) Database_name() (localctx IDatabase_nameContext) {
 	_ = this
 
 	localctx = NewDatabase_nameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 26, KuneiformParserRULE_database_name)
+	p.EnterRule(localctx, 32, KuneiformParserRULE_database_name)
 
 	defer func() {
 		p.ExitRule()
@@ -2543,7 +3197,7 @@ func (p *KuneiformParser) Database_name() (localctx IDatabase_nameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(159)
+		p.SetState(196)
 		p.Match(KuneiformParserIDENTIFIER)
 	}
 
@@ -2618,7 +3272,7 @@ func (p *KuneiformParser) Table_name() (localctx ITable_nameContext) {
 	_ = this
 
 	localctx = NewTable_nameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 28, KuneiformParserRULE_table_name)
+	p.EnterRule(localctx, 34, KuneiformParserRULE_table_name)
 
 	defer func() {
 		p.ExitRule()
@@ -2638,7 +3292,7 @@ func (p *KuneiformParser) Table_name() (localctx ITable_nameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(161)
+		p.SetState(198)
 		p.Match(KuneiformParserIDENTIFIER)
 	}
 
@@ -2713,7 +3367,7 @@ func (p *KuneiformParser) Action_name() (localctx IAction_nameContext) {
 	_ = this
 
 	localctx = NewAction_nameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 30, KuneiformParserRULE_action_name)
+	p.EnterRule(localctx, 36, KuneiformParserRULE_action_name)
 
 	defer func() {
 		p.ExitRule()
@@ -2733,7 +3387,7 @@ func (p *KuneiformParser) Action_name() (localctx IAction_nameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(163)
+		p.SetState(200)
 		p.Match(KuneiformParserIDENTIFIER)
 	}
 
@@ -2808,7 +3462,7 @@ func (p *KuneiformParser) Column_name() (localctx IColumn_nameContext) {
 	_ = this
 
 	localctx = NewColumn_nameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, KuneiformParserRULE_column_name)
+	p.EnterRule(localctx, 38, KuneiformParserRULE_column_name)
 
 	defer func() {
 		p.ExitRule()
@@ -2828,7 +3482,7 @@ func (p *KuneiformParser) Column_name() (localctx IColumn_nameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(165)
+		p.SetState(202)
 		p.Match(KuneiformParserIDENTIFIER)
 	}
 
@@ -2951,7 +3605,7 @@ func (p *KuneiformParser) Column_name_list() (localctx IColumn_name_listContext)
 	_ = this
 
 	localctx = NewColumn_name_listContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 34, KuneiformParserRULE_column_name_list)
+	p.EnterRule(localctx, 40, KuneiformParserRULE_column_name_list)
 	var _la int
 
 	defer func() {
@@ -2972,24 +3626,24 @@ func (p *KuneiformParser) Column_name_list() (localctx IColumn_name_listContext)
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(167)
+		p.SetState(204)
 		p.Column_name()
 	}
-	p.SetState(172)
+	p.SetState(209)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == KuneiformParserCOMMA {
 		{
-			p.SetState(168)
+			p.SetState(205)
 			p.Match(KuneiformParserCOMMA)
 		}
 		{
-			p.SetState(169)
+			p.SetState(206)
 			p.Column_name()
 		}
 
-		p.SetState(174)
+		p.SetState(211)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -3065,7 +3719,7 @@ func (p *KuneiformParser) Index_name() (localctx IIndex_nameContext) {
 	_ = this
 
 	localctx = NewIndex_nameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 36, KuneiformParserRULE_index_name)
+	p.EnterRule(localctx, 42, KuneiformParserRULE_index_name)
 
 	defer func() {
 		p.ExitRule()
@@ -3085,7 +3739,7 @@ func (p *KuneiformParser) Index_name() (localctx IIndex_nameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(175)
+		p.SetState(212)
 		p.Match(KuneiformParserINDEX_NAME)
 	}
 
@@ -3180,7 +3834,7 @@ func (p *KuneiformParser) Sql_keywords() (localctx ISql_keywordsContext) {
 	_ = this
 
 	localctx = NewSql_keywordsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 38, KuneiformParserRULE_sql_keywords)
+	p.EnterRule(localctx, 44, KuneiformParserRULE_sql_keywords)
 	var _la int
 
 	defer func() {
@@ -3201,10 +3855,10 @@ func (p *KuneiformParser) Sql_keywords() (localctx ISql_keywordsContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(177)
+		p.SetState(214)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4160749568) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4260607557632) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -3305,7 +3959,7 @@ func (p *KuneiformParser) Sql_stmt() (localctx ISql_stmtContext) {
 	_ = this
 
 	localctx = NewSql_stmtContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 40, KuneiformParserRULE_sql_stmt)
+	p.EnterRule(localctx, 46, KuneiformParserRULE_sql_stmt)
 
 	defer func() {
 		p.ExitRule()
@@ -3325,15 +3979,15 @@ func (p *KuneiformParser) Sql_stmt() (localctx ISql_stmtContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(179)
+		p.SetState(216)
 		p.Sql_keywords()
 	}
 	{
-		p.SetState(180)
+		p.SetState(217)
 		p.Match(KuneiformParserSQL_STMT)
 	}
 	{
-		p.SetState(181)
+		p.SetState(218)
 		p.Match(KuneiformParserSQL_END_SCOL)
 	}
 
@@ -3420,7 +4074,7 @@ func (p *KuneiformParser) Action_stmt() (localctx IAction_stmtContext) {
 	_ = this
 
 	localctx = NewAction_stmtContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 42, KuneiformParserRULE_action_stmt)
+	p.EnterRule(localctx, 48, KuneiformParserRULE_action_stmt)
 
 	defer func() {
 		p.ExitRule()
@@ -3440,7 +4094,7 @@ func (p *KuneiformParser) Action_stmt() (localctx IAction_stmtContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(183)
+		p.SetState(220)
 		p.Sql_stmt()
 	}
 
@@ -3553,7 +4207,7 @@ func (p *KuneiformParser) Action_stmt_list() (localctx IAction_stmt_listContext)
 	_ = this
 
 	localctx = NewAction_stmt_listContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 44, KuneiformParserRULE_action_stmt_list)
+	p.EnterRule(localctx, 50, KuneiformParserRULE_action_stmt_list)
 	var _la int
 
 	defer func() {
@@ -3574,20 +4228,20 @@ func (p *KuneiformParser) Action_stmt_list() (localctx IAction_stmt_listContext)
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(185)
+		p.SetState(222)
 		p.Action_stmt()
 	}
-	p.SetState(189)
+	p.SetState(226)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4160749568) != 0 {
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4260607557632) != 0 {
 		{
-			p.SetState(186)
+			p.SetState(223)
 			p.Action_stmt()
 		}
 
-		p.SetState(191)
+		p.SetState(228)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}

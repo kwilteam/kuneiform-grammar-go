@@ -40,6 +40,15 @@ type KuneiformParserVisitor interface {
 	// Visit a parse tree produced by KuneiformParser#index_def_list.
 	VisitIndex_def_list(ctx *Index_def_listContext) interface{}
 
+	// Visit a parse tree produced by KuneiformParser#foreign_key_action.
+	VisitForeign_key_action(ctx *Foreign_key_actionContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#foreign_key_def.
+	VisitForeign_key_def(ctx *Foreign_key_defContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#foreign_key_def_list.
+	VisitForeign_key_def_list(ctx *Foreign_key_def_listContext) interface{}
+
 	// Visit a parse tree produced by KuneiformParser#action_decl.
 	VisitAction_decl(ctx *Action_declContext) interface{}
 
