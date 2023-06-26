@@ -111,6 +111,10 @@ func (v *BaseKuneiformParserVisitor) VisitExt_config_value(ctx *Ext_config_value
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseKuneiformParserVisitor) VisitInit_decl(ctx *Init_declContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseKuneiformParserVisitor) VisitAction_stmt_list(ctx *Action_stmt_listContext) interface{} {
 	return v.VisitChildren(ctx)
 }

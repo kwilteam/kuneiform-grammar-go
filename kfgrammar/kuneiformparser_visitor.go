@@ -85,6 +85,9 @@ type KuneiformParserVisitor interface {
 	// Visit a parse tree produced by KuneiformParser#ext_config_value.
 	VisitExt_config_value(ctx *Ext_config_valueContext) interface{}
 
+	// Visit a parse tree produced by KuneiformParser#init_decl.
+	VisitInit_decl(ctx *Init_declContext) interface{}
+
 	// Visit a parse tree produced by KuneiformParser#action_stmt_list.
 	VisitAction_stmt_list(ctx *Action_stmt_listContext) interface{}
 

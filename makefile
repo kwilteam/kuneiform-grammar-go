@@ -6,7 +6,7 @@ help:
 
 build: ## generate antlr code
 	@echo Generate antlr code
-	@rm -rf ./kuneiform-grammar/{*.go,*.interp,*.tokens}
+	@rm -rf ./kfgrammar/{*.go,*.interp,*.tokens}
 	@cd ./kuneiform-grammar && ./generate.sh Go kfgrammar ../kfgrammar
 
 git-sync: ## sync submodule
