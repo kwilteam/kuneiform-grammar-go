@@ -13,6 +13,15 @@ type KuneiformParserVisitor interface {
 	// Visit a parse tree produced by KuneiformParser#database_directive.
 	VisitDatabase_directive(ctx *Database_directiveContext) interface{}
 
+	// Visit a parse tree produced by KuneiformParser#extension_directive.
+	VisitExtension_directive(ctx *Extension_directiveContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#ext_config_list.
+	VisitExt_config_list(ctx *Ext_config_listContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#ext_config.
+	VisitExt_config(ctx *Ext_configContext) interface{}
+
 	// Visit a parse tree produced by KuneiformParser#table_decl.
 	VisitTable_decl(ctx *Table_declContext) interface{}
 
@@ -46,11 +55,17 @@ type KuneiformParserVisitor interface {
 	// Visit a parse tree produced by KuneiformParser#action_decl.
 	VisitAction_decl(ctx *Action_declContext) interface{}
 
-	// Visit a parse tree produced by KuneiformParser#action_param_list.
-	VisitAction_param_list(ctx *Action_param_listContext) interface{}
+	// Visit a parse tree produced by KuneiformParser#param_list.
+	VisitParam_list(ctx *Param_listContext) interface{}
 
 	// Visit a parse tree produced by KuneiformParser#database_name.
 	VisitDatabase_name(ctx *Database_nameContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#extension_name.
+	VisitExtension_name(ctx *Extension_nameContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#ext_config_name.
+	VisitExt_config_name(ctx *Ext_config_nameContext) interface{}
 
 	// Visit a parse tree produced by KuneiformParser#table_name.
 	VisitTable_name(ctx *Table_nameContext) interface{}
@@ -67,15 +82,42 @@ type KuneiformParserVisitor interface {
 	// Visit a parse tree produced by KuneiformParser#index_name.
 	VisitIndex_name(ctx *Index_nameContext) interface{}
 
-	// Visit a parse tree produced by KuneiformParser#sql_keywords.
-	VisitSql_keywords(ctx *Sql_keywordsContext) interface{}
+	// Visit a parse tree produced by KuneiformParser#ext_config_value.
+	VisitExt_config_value(ctx *Ext_config_valueContext) interface{}
 
-	// Visit a parse tree produced by KuneiformParser#sql_stmt.
-	VisitSql_stmt(ctx *Sql_stmtContext) interface{}
+	// Visit a parse tree produced by KuneiformParser#action_stmt_list.
+	VisitAction_stmt_list(ctx *Action_stmt_listContext) interface{}
 
 	// Visit a parse tree produced by KuneiformParser#action_stmt.
 	VisitAction_stmt(ctx *Action_stmtContext) interface{}
 
-	// Visit a parse tree produced by KuneiformParser#action_stmt_list.
-	VisitAction_stmt_list(ctx *Action_stmt_listContext) interface{}
+	// Visit a parse tree produced by KuneiformParser#a_sql_stmt.
+	VisitA_sql_stmt(ctx *A_sql_stmtContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_variable_name.
+	VisitA_variable_name(ctx *A_variable_nameContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_block_variable_name.
+	VisitA_block_variable_name(ctx *A_block_variable_nameContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_literal_value.
+	VisitA_literal_value(ctx *A_literal_valueContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_fn_name.
+	VisitA_fn_name(ctx *A_fn_nameContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_call_receivers.
+	VisitA_call_receivers(ctx *A_call_receiversContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_call_stmt.
+	VisitA_call_stmt(ctx *A_call_stmtContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_call_body.
+	VisitA_call_body(ctx *A_call_bodyContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_fn_arg_list.
+	VisitA_fn_arg_list(ctx *A_fn_arg_listContext) interface{}
+
+	// Visit a parse tree produced by KuneiformParser#a_fn_arg.
+	VisitA_fn_arg(ctx *A_fn_argContext) interface{}
 }
