@@ -34,29 +34,30 @@ func kuneiformparserParserInit() {
 	staticData.literalNames = []string{
 		"", "':'", "';'", "'('", "'{'", "')'", "'}'", "','", "'$'", "'#'", "'database'",
 		"'use'", "'as'", "'table'", "'action'", "'public'", "'private'", "'view'",
-		"'init'", "'int'", "'text'", "'min'", "'max'", "'minlen'", "'maxlen'",
-		"'notnull'", "'primary'", "'default'", "'unique'", "'index'", "'foreign_key'",
-		"'fk'", "'references'", "'ref'", "'on_update'", "'on_delete'", "'do'",
-		"'no_action'", "'cascade'", "'set_null'", "'set_default'", "'restrict'",
+		"'mustsign'", "'init'", "'int'", "'text'", "'min'", "'max'", "'minlen'",
+		"'maxlen'", "'notnull'", "'primary'", "'default'", "'unique'", "'index'",
+		"'foreign_key'", "'fk'", "'references'", "'ref'", "'on_update'", "'on_delete'",
+		"'do'", "'no_action'", "'cascade'", "'set_null'", "'set_default'", "'restrict'",
 		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 		"", "'='", "'+'", "'.'", "", "", "'@'",
 	}
 	staticData.symbolicNames = []string{
 		"", "COL", "SCOL", "L_PAREN", "L_BRACE", "R_PAREN", "R_BRACE", "COMMA",
 		"DOLLAR", "HASH", "DATABASE_", "USE_", "AS_", "TABLE_", "ACTION_", "PUBLIC_",
-		"PRIVATE_", "VIEW_", "INIT_", "INT_", "TEXT_", "MIN_", "MAX_", "MIN_LEN_",
-		"MAX_LEN_", "NOT_NULL_", "PRIMARY_", "DEFAULT_", "UNIQUE_", "INDEX_",
-		"FOREIGN_KEY_", "FOREIGN_KEY_ABBR_", "REFERENCES_", "REFERENCES_ABBR_",
-		"ACTION_ON_UPDATE_", "ACTION_ON_DELETE_", "ACTION_DO_", "ACTION_DO_NO_ACTION_",
-		"ACTION_DO_CASCADE_", "ACTION_DO_SET_NULL_", "ACTION_DO_SET_DEFAULT_",
-		"ACTION_DO_RESTRICT_", "SELECT_", "INSERT_", "UPDATE_", "DELETE_", "WITH_",
-		"ACTION_OPEN", "INIT_OPEN", "IDENTIFIER", "INDEX_NAME", "PARAMETER",
-		"UNSIGNED_NUMBER_LITERAL", "SIGNED_NUMBER_LITERAL", "STRING_LITERAL",
-		"WS", "TERMINATOR", "BLOCK_COMMENT", "LINE_COMMENT", "ACTION_CLOSE",
-		"EQ", "PLUS", "PERIOD", "A_COMMA", "A_DOLLAR", "A_AT", "A_L_PAREN",
-		"A_R_PAREN", "A_STMT_END", "SQL_KEYWORDS", "A_IDENTIFIER", "A_VARIABLE",
-		"A_REF", "A_UNSIGNED_NUMBER_LITERAL", "A_SIGNED_NUMBER_LITERAL", "A_STRING_LITERAL",
-		"A_SQL_STMT", "A_WS", "A_TERMINATOR", "A_BLOCK_COMMENT", "A_LINE_COMMENT",
+		"PRIVATE_", "VIEW_", "MUSTSIGN_", "INIT_", "INT_", "TEXT_", "MIN_",
+		"MAX_", "MIN_LEN_", "MAX_LEN_", "NOT_NULL_", "PRIMARY_", "DEFAULT_",
+		"UNIQUE_", "INDEX_", "FOREIGN_KEY_", "FOREIGN_KEY_ABBR_", "REFERENCES_",
+		"REFERENCES_ABBR_", "ACTION_ON_UPDATE_", "ACTION_ON_DELETE_", "ACTION_DO_",
+		"ACTION_DO_NO_ACTION_", "ACTION_DO_CASCADE_", "ACTION_DO_SET_NULL_",
+		"ACTION_DO_SET_DEFAULT_", "ACTION_DO_RESTRICT_", "SELECT_", "INSERT_",
+		"UPDATE_", "DELETE_", "WITH_", "ACTION_OPEN", "INIT_OPEN", "IDENTIFIER",
+		"INDEX_NAME", "PARAMETER", "UNSIGNED_NUMBER_LITERAL", "SIGNED_NUMBER_LITERAL",
+		"STRING_LITERAL", "WS", "TERMINATOR", "BLOCK_COMMENT", "LINE_COMMENT",
+		"ACTION_CLOSE", "EQ", "PLUS", "PERIOD", "A_COMMA", "A_DOLLAR", "A_AT",
+		"A_L_PAREN", "A_R_PAREN", "A_STMT_END", "SQL_KEYWORDS", "A_IDENTIFIER",
+		"A_VARIABLE", "A_REF", "A_UNSIGNED_NUMBER_LITERAL", "A_SIGNED_NUMBER_LITERAL",
+		"A_STRING_LITERAL", "A_SQL_STMT", "A_WS", "A_TERMINATOR", "A_BLOCK_COMMENT",
+		"A_LINE_COMMENT",
 	}
 	staticData.ruleNames = []string{
 		"source_unit", "database_directive", "extension_directive", "ext_config_list",
@@ -71,7 +72,7 @@ func kuneiformparserParserInit() {
 	}
 	staticData.predictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 80, 330, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 81, 330, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 2, 19, 7, 19, 2, 20, 7, 20, 2,
@@ -106,9 +107,9 @@ func kuneiformparserParserInit() {
 		12, 37, 323, 9, 37, 1, 38, 1, 38, 1, 38, 3, 38, 328, 8, 38, 1, 38, 0, 0,
 		39, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34,
 		36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70,
-		72, 74, 76, 0, 8, 1, 0, 19, 20, 2, 0, 52, 52, 54, 54, 2, 0, 26, 26, 28,
-		29, 1, 0, 34, 35, 1, 0, 37, 41, 1, 0, 30, 31, 1, 0, 32, 33, 2, 0, 73, 73,
-		75, 75, 323, 0, 78, 1, 0, 0, 0, 2, 96, 1, 0, 0, 0, 4, 99, 1, 0, 0, 0, 6,
+		72, 74, 76, 0, 8, 1, 0, 20, 21, 2, 0, 53, 53, 55, 55, 2, 0, 27, 27, 29,
+		30, 1, 0, 35, 36, 1, 0, 38, 42, 1, 0, 31, 32, 1, 0, 33, 34, 2, 0, 74, 74,
+		76, 76, 323, 0, 78, 1, 0, 0, 0, 2, 96, 1, 0, 0, 0, 4, 99, 1, 0, 0, 0, 6,
 		113, 1, 0, 0, 0, 8, 121, 1, 0, 0, 0, 10, 125, 1, 0, 0, 0, 12, 144, 1, 0,
 		0, 0, 14, 152, 1, 0, 0, 0, 16, 160, 1, 0, 0, 0, 18, 190, 1, 0, 0, 0, 20,
 		192, 1, 0, 0, 0, 22, 194, 1, 0, 0, 0, 24, 196, 1, 0, 0, 0, 26, 202, 1,
@@ -148,22 +149,22 @@ func kuneiformparserParserInit() {
 		12, 6, 0, 153, 154, 5, 7, 0, 0, 154, 156, 3, 12, 6, 0, 155, 153, 1, 0,
 		0, 0, 156, 159, 1, 0, 0, 0, 157, 155, 1, 0, 0, 0, 157, 158, 1, 0, 0, 0,
 		158, 15, 1, 0, 0, 0, 159, 157, 1, 0, 0, 0, 160, 161, 7, 0, 0, 0, 161, 17,
-		1, 0, 0, 0, 162, 191, 5, 26, 0, 0, 163, 191, 5, 25, 0, 0, 164, 191, 5,
-		28, 0, 0, 165, 166, 5, 27, 0, 0, 166, 167, 5, 3, 0, 0, 167, 168, 3, 20,
-		10, 0, 168, 169, 5, 5, 0, 0, 169, 191, 1, 0, 0, 0, 170, 171, 5, 21, 0,
+		1, 0, 0, 0, 162, 191, 5, 27, 0, 0, 163, 191, 5, 26, 0, 0, 164, 191, 5,
+		29, 0, 0, 165, 166, 5, 28, 0, 0, 166, 167, 5, 3, 0, 0, 167, 168, 3, 20,
+		10, 0, 168, 169, 5, 5, 0, 0, 169, 191, 1, 0, 0, 0, 170, 171, 5, 22, 0,
 		0, 171, 172, 5, 3, 0, 0, 172, 173, 3, 22, 11, 0, 173, 174, 5, 5, 0, 0,
-		174, 191, 1, 0, 0, 0, 175, 176, 5, 22, 0, 0, 176, 177, 5, 3, 0, 0, 177,
+		174, 191, 1, 0, 0, 0, 175, 176, 5, 23, 0, 0, 176, 177, 5, 3, 0, 0, 177,
 		178, 3, 22, 11, 0, 178, 179, 5, 5, 0, 0, 179, 191, 1, 0, 0, 0, 180, 181,
-		5, 23, 0, 0, 181, 182, 5, 3, 0, 0, 182, 183, 3, 22, 11, 0, 183, 184, 5,
-		5, 0, 0, 184, 191, 1, 0, 0, 0, 185, 186, 5, 24, 0, 0, 186, 187, 5, 3, 0,
+		5, 24, 0, 0, 181, 182, 5, 3, 0, 0, 182, 183, 3, 22, 11, 0, 183, 184, 5,
+		5, 0, 0, 184, 191, 1, 0, 0, 0, 185, 186, 5, 25, 0, 0, 186, 187, 5, 3, 0,
 		0, 187, 188, 3, 22, 11, 0, 188, 189, 5, 5, 0, 0, 189, 191, 1, 0, 0, 0,
 		190, 162, 1, 0, 0, 0, 190, 163, 1, 0, 0, 0, 190, 164, 1, 0, 0, 0, 190,
 		165, 1, 0, 0, 0, 190, 170, 1, 0, 0, 0, 190, 175, 1, 0, 0, 0, 190, 180,
 		1, 0, 0, 0, 190, 185, 1, 0, 0, 0, 191, 19, 1, 0, 0, 0, 192, 193, 7, 1,
-		0, 0, 193, 21, 1, 0, 0, 0, 194, 195, 5, 52, 0, 0, 195, 23, 1, 0, 0, 0,
+		0, 0, 193, 21, 1, 0, 0, 0, 194, 195, 5, 53, 0, 0, 195, 23, 1, 0, 0, 0,
 		196, 197, 3, 48, 24, 0, 197, 198, 7, 2, 0, 0, 198, 199, 5, 3, 0, 0, 199,
 		200, 3, 46, 23, 0, 200, 201, 5, 5, 0, 0, 201, 25, 1, 0, 0, 0, 202, 204,
-		7, 3, 0, 0, 203, 205, 5, 36, 0, 0, 204, 203, 1, 0, 0, 0, 204, 205, 1, 0,
+		7, 3, 0, 0, 203, 205, 5, 37, 0, 0, 204, 203, 1, 0, 0, 0, 204, 205, 1, 0,
 		0, 0, 205, 206, 1, 0, 0, 0, 206, 207, 7, 4, 0, 0, 207, 27, 1, 0, 0, 0,
 		208, 209, 7, 5, 0, 0, 209, 210, 5, 3, 0, 0, 210, 211, 3, 46, 23, 0, 211,
 		212, 5, 5, 0, 0, 212, 213, 7, 6, 0, 0, 213, 214, 3, 40, 20, 0, 214, 215,
@@ -171,37 +172,37 @@ func kuneiformparserParserInit() {
 		26, 13, 0, 218, 217, 1, 0, 0, 0, 219, 222, 1, 0, 0, 0, 220, 218, 1, 0,
 		0, 0, 220, 221, 1, 0, 0, 0, 221, 29, 1, 0, 0, 0, 222, 220, 1, 0, 0, 0,
 		223, 224, 5, 14, 0, 0, 224, 225, 3, 42, 21, 0, 225, 226, 5, 3, 0, 0, 226,
-		227, 3, 32, 16, 0, 227, 228, 5, 5, 0, 0, 228, 229, 5, 47, 0, 0, 229, 230,
-		3, 54, 27, 0, 230, 231, 5, 59, 0, 0, 231, 31, 1, 0, 0, 0, 232, 234, 5,
-		51, 0, 0, 233, 232, 1, 0, 0, 0, 233, 234, 1, 0, 0, 0, 234, 239, 1, 0, 0,
-		0, 235, 236, 5, 7, 0, 0, 236, 238, 5, 51, 0, 0, 237, 235, 1, 0, 0, 0, 238,
+		227, 3, 32, 16, 0, 227, 228, 5, 5, 0, 0, 228, 229, 5, 48, 0, 0, 229, 230,
+		3, 54, 27, 0, 230, 231, 5, 60, 0, 0, 231, 31, 1, 0, 0, 0, 232, 234, 5,
+		52, 0, 0, 233, 232, 1, 0, 0, 0, 233, 234, 1, 0, 0, 0, 234, 239, 1, 0, 0,
+		0, 235, 236, 5, 7, 0, 0, 236, 238, 5, 52, 0, 0, 237, 235, 1, 0, 0, 0, 238,
 		241, 1, 0, 0, 0, 239, 237, 1, 0, 0, 0, 239, 240, 1, 0, 0, 0, 240, 33, 1,
-		0, 0, 0, 241, 239, 1, 0, 0, 0, 242, 243, 5, 49, 0, 0, 243, 35, 1, 0, 0,
-		0, 244, 245, 5, 49, 0, 0, 245, 37, 1, 0, 0, 0, 246, 247, 5, 49, 0, 0, 247,
-		39, 1, 0, 0, 0, 248, 249, 5, 49, 0, 0, 249, 41, 1, 0, 0, 0, 250, 251, 5,
-		49, 0, 0, 251, 43, 1, 0, 0, 0, 252, 253, 5, 49, 0, 0, 253, 45, 1, 0, 0,
+		0, 0, 0, 241, 239, 1, 0, 0, 0, 242, 243, 5, 50, 0, 0, 243, 35, 1, 0, 0,
+		0, 244, 245, 5, 50, 0, 0, 245, 37, 1, 0, 0, 0, 246, 247, 5, 50, 0, 0, 247,
+		39, 1, 0, 0, 0, 248, 249, 5, 50, 0, 0, 249, 41, 1, 0, 0, 0, 250, 251, 5,
+		50, 0, 0, 251, 43, 1, 0, 0, 0, 252, 253, 5, 50, 0, 0, 253, 45, 1, 0, 0,
 		0, 254, 259, 3, 44, 22, 0, 255, 256, 5, 7, 0, 0, 256, 258, 3, 44, 22, 0,
 		257, 255, 1, 0, 0, 0, 258, 261, 1, 0, 0, 0, 259, 257, 1, 0, 0, 0, 259,
 		260, 1, 0, 0, 0, 260, 47, 1, 0, 0, 0, 261, 259, 1, 0, 0, 0, 262, 263, 5,
-		50, 0, 0, 263, 49, 1, 0, 0, 0, 264, 265, 3, 20, 10, 0, 265, 51, 1, 0, 0,
-		0, 266, 267, 5, 48, 0, 0, 267, 268, 3, 54, 27, 0, 268, 269, 5, 59, 0, 0,
+		51, 0, 0, 263, 49, 1, 0, 0, 0, 264, 265, 3, 20, 10, 0, 265, 51, 1, 0, 0,
+		0, 266, 267, 5, 49, 0, 0, 267, 268, 3, 54, 27, 0, 268, 269, 5, 60, 0, 0,
 		269, 53, 1, 0, 0, 0, 270, 272, 3, 56, 28, 0, 271, 270, 1, 0, 0, 0, 272,
 		273, 1, 0, 0, 0, 273, 271, 1, 0, 0, 0, 273, 274, 1, 0, 0, 0, 274, 55, 1,
 		0, 0, 0, 275, 278, 3, 58, 29, 0, 276, 278, 3, 70, 35, 0, 277, 275, 1, 0,
-		0, 0, 277, 276, 1, 0, 0, 0, 278, 57, 1, 0, 0, 0, 279, 280, 5, 76, 0, 0,
-		280, 281, 5, 68, 0, 0, 281, 59, 1, 0, 0, 0, 282, 283, 5, 71, 0, 0, 283,
-		61, 1, 0, 0, 0, 284, 285, 5, 72, 0, 0, 285, 63, 1, 0, 0, 0, 286, 287, 7,
-		7, 0, 0, 287, 65, 1, 0, 0, 0, 288, 291, 5, 70, 0, 0, 289, 290, 5, 62, 0,
-		0, 290, 292, 5, 70, 0, 0, 291, 289, 1, 0, 0, 0, 291, 292, 1, 0, 0, 0, 292,
-		67, 1, 0, 0, 0, 293, 298, 3, 60, 30, 0, 294, 295, 5, 63, 0, 0, 295, 297,
+		0, 0, 277, 276, 1, 0, 0, 0, 278, 57, 1, 0, 0, 0, 279, 280, 5, 77, 0, 0,
+		280, 281, 5, 69, 0, 0, 281, 59, 1, 0, 0, 0, 282, 283, 5, 72, 0, 0, 283,
+		61, 1, 0, 0, 0, 284, 285, 5, 73, 0, 0, 285, 63, 1, 0, 0, 0, 286, 287, 7,
+		7, 0, 0, 287, 65, 1, 0, 0, 0, 288, 291, 5, 71, 0, 0, 289, 290, 5, 63, 0,
+		0, 290, 292, 5, 71, 0, 0, 291, 289, 1, 0, 0, 0, 291, 292, 1, 0, 0, 0, 292,
+		67, 1, 0, 0, 0, 293, 298, 3, 60, 30, 0, 294, 295, 5, 64, 0, 0, 295, 297,
 		3, 60, 30, 0, 296, 294, 1, 0, 0, 0, 297, 300, 1, 0, 0, 0, 298, 296, 1,
 		0, 0, 0, 298, 299, 1, 0, 0, 0, 299, 69, 1, 0, 0, 0, 300, 298, 1, 0, 0,
-		0, 301, 302, 3, 68, 34, 0, 302, 303, 5, 60, 0, 0, 303, 305, 1, 0, 0, 0,
+		0, 301, 302, 3, 68, 34, 0, 302, 303, 5, 61, 0, 0, 303, 305, 1, 0, 0, 0,
 		304, 301, 1, 0, 0, 0, 304, 305, 1, 0, 0, 0, 305, 306, 1, 0, 0, 0, 306,
-		307, 3, 72, 36, 0, 307, 308, 5, 68, 0, 0, 308, 71, 1, 0, 0, 0, 309, 310,
-		3, 66, 33, 0, 310, 311, 5, 66, 0, 0, 311, 312, 3, 74, 37, 0, 312, 313,
-		5, 67, 0, 0, 313, 73, 1, 0, 0, 0, 314, 316, 3, 76, 38, 0, 315, 314, 1,
-		0, 0, 0, 315, 316, 1, 0, 0, 0, 316, 321, 1, 0, 0, 0, 317, 318, 5, 63, 0,
+		307, 3, 72, 36, 0, 307, 308, 5, 69, 0, 0, 308, 71, 1, 0, 0, 0, 309, 310,
+		3, 66, 33, 0, 310, 311, 5, 67, 0, 0, 311, 312, 3, 74, 37, 0, 312, 313,
+		5, 68, 0, 0, 313, 73, 1, 0, 0, 0, 314, 316, 3, 76, 38, 0, 315, 314, 1,
+		0, 0, 0, 315, 316, 1, 0, 0, 0, 316, 321, 1, 0, 0, 0, 317, 318, 5, 64, 0,
 		0, 318, 320, 3, 76, 38, 0, 319, 317, 1, 0, 0, 0, 320, 323, 1, 0, 0, 0,
 		321, 319, 1, 0, 0, 0, 321, 322, 1, 0, 0, 0, 322, 75, 1, 0, 0, 0, 323, 321,
 		1, 0, 0, 0, 324, 328, 3, 64, 32, 0, 325, 328, 3, 60, 30, 0, 326, 328, 3,
@@ -264,69 +265,70 @@ const (
 	KuneiformParserPUBLIC_                   = 15
 	KuneiformParserPRIVATE_                  = 16
 	KuneiformParserVIEW_                     = 17
-	KuneiformParserINIT_                     = 18
-	KuneiformParserINT_                      = 19
-	KuneiformParserTEXT_                     = 20
-	KuneiformParserMIN_                      = 21
-	KuneiformParserMAX_                      = 22
-	KuneiformParserMIN_LEN_                  = 23
-	KuneiformParserMAX_LEN_                  = 24
-	KuneiformParserNOT_NULL_                 = 25
-	KuneiformParserPRIMARY_                  = 26
-	KuneiformParserDEFAULT_                  = 27
-	KuneiformParserUNIQUE_                   = 28
-	KuneiformParserINDEX_                    = 29
-	KuneiformParserFOREIGN_KEY_              = 30
-	KuneiformParserFOREIGN_KEY_ABBR_         = 31
-	KuneiformParserREFERENCES_               = 32
-	KuneiformParserREFERENCES_ABBR_          = 33
-	KuneiformParserACTION_ON_UPDATE_         = 34
-	KuneiformParserACTION_ON_DELETE_         = 35
-	KuneiformParserACTION_DO_                = 36
-	KuneiformParserACTION_DO_NO_ACTION_      = 37
-	KuneiformParserACTION_DO_CASCADE_        = 38
-	KuneiformParserACTION_DO_SET_NULL_       = 39
-	KuneiformParserACTION_DO_SET_DEFAULT_    = 40
-	KuneiformParserACTION_DO_RESTRICT_       = 41
-	KuneiformParserSELECT_                   = 42
-	KuneiformParserINSERT_                   = 43
-	KuneiformParserUPDATE_                   = 44
-	KuneiformParserDELETE_                   = 45
-	KuneiformParserWITH_                     = 46
-	KuneiformParserACTION_OPEN               = 47
-	KuneiformParserINIT_OPEN                 = 48
-	KuneiformParserIDENTIFIER                = 49
-	KuneiformParserINDEX_NAME                = 50
-	KuneiformParserPARAMETER                 = 51
-	KuneiformParserUNSIGNED_NUMBER_LITERAL   = 52
-	KuneiformParserSIGNED_NUMBER_LITERAL     = 53
-	KuneiformParserSTRING_LITERAL            = 54
-	KuneiformParserWS                        = 55
-	KuneiformParserTERMINATOR                = 56
-	KuneiformParserBLOCK_COMMENT             = 57
-	KuneiformParserLINE_COMMENT              = 58
-	KuneiformParserACTION_CLOSE              = 59
-	KuneiformParserEQ                        = 60
-	KuneiformParserPLUS                      = 61
-	KuneiformParserPERIOD                    = 62
-	KuneiformParserA_COMMA                   = 63
-	KuneiformParserA_DOLLAR                  = 64
-	KuneiformParserA_AT                      = 65
-	KuneiformParserA_L_PAREN                 = 66
-	KuneiformParserA_R_PAREN                 = 67
-	KuneiformParserA_STMT_END                = 68
-	KuneiformParserSQL_KEYWORDS              = 69
-	KuneiformParserA_IDENTIFIER              = 70
-	KuneiformParserA_VARIABLE                = 71
-	KuneiformParserA_REF                     = 72
-	KuneiformParserA_UNSIGNED_NUMBER_LITERAL = 73
-	KuneiformParserA_SIGNED_NUMBER_LITERAL   = 74
-	KuneiformParserA_STRING_LITERAL          = 75
-	KuneiformParserA_SQL_STMT                = 76
-	KuneiformParserA_WS                      = 77
-	KuneiformParserA_TERMINATOR              = 78
-	KuneiformParserA_BLOCK_COMMENT           = 79
-	KuneiformParserA_LINE_COMMENT            = 80
+	KuneiformParserMUSTSIGN_                 = 18
+	KuneiformParserINIT_                     = 19
+	KuneiformParserINT_                      = 20
+	KuneiformParserTEXT_                     = 21
+	KuneiformParserMIN_                      = 22
+	KuneiformParserMAX_                      = 23
+	KuneiformParserMIN_LEN_                  = 24
+	KuneiformParserMAX_LEN_                  = 25
+	KuneiformParserNOT_NULL_                 = 26
+	KuneiformParserPRIMARY_                  = 27
+	KuneiformParserDEFAULT_                  = 28
+	KuneiformParserUNIQUE_                   = 29
+	KuneiformParserINDEX_                    = 30
+	KuneiformParserFOREIGN_KEY_              = 31
+	KuneiformParserFOREIGN_KEY_ABBR_         = 32
+	KuneiformParserREFERENCES_               = 33
+	KuneiformParserREFERENCES_ABBR_          = 34
+	KuneiformParserACTION_ON_UPDATE_         = 35
+	KuneiformParserACTION_ON_DELETE_         = 36
+	KuneiformParserACTION_DO_                = 37
+	KuneiformParserACTION_DO_NO_ACTION_      = 38
+	KuneiformParserACTION_DO_CASCADE_        = 39
+	KuneiformParserACTION_DO_SET_NULL_       = 40
+	KuneiformParserACTION_DO_SET_DEFAULT_    = 41
+	KuneiformParserACTION_DO_RESTRICT_       = 42
+	KuneiformParserSELECT_                   = 43
+	KuneiformParserINSERT_                   = 44
+	KuneiformParserUPDATE_                   = 45
+	KuneiformParserDELETE_                   = 46
+	KuneiformParserWITH_                     = 47
+	KuneiformParserACTION_OPEN               = 48
+	KuneiformParserINIT_OPEN                 = 49
+	KuneiformParserIDENTIFIER                = 50
+	KuneiformParserINDEX_NAME                = 51
+	KuneiformParserPARAMETER                 = 52
+	KuneiformParserUNSIGNED_NUMBER_LITERAL   = 53
+	KuneiformParserSIGNED_NUMBER_LITERAL     = 54
+	KuneiformParserSTRING_LITERAL            = 55
+	KuneiformParserWS                        = 56
+	KuneiformParserTERMINATOR                = 57
+	KuneiformParserBLOCK_COMMENT             = 58
+	KuneiformParserLINE_COMMENT              = 59
+	KuneiformParserACTION_CLOSE              = 60
+	KuneiformParserEQ                        = 61
+	KuneiformParserPLUS                      = 62
+	KuneiformParserPERIOD                    = 63
+	KuneiformParserA_COMMA                   = 64
+	KuneiformParserA_DOLLAR                  = 65
+	KuneiformParserA_AT                      = 66
+	KuneiformParserA_L_PAREN                 = 67
+	KuneiformParserA_R_PAREN                 = 68
+	KuneiformParserA_STMT_END                = 69
+	KuneiformParserSQL_KEYWORDS              = 70
+	KuneiformParserA_IDENTIFIER              = 71
+	KuneiformParserA_VARIABLE                = 72
+	KuneiformParserA_REF                     = 73
+	KuneiformParserA_UNSIGNED_NUMBER_LITERAL = 74
+	KuneiformParserA_SIGNED_NUMBER_LITERAL   = 75
+	KuneiformParserA_STRING_LITERAL          = 76
+	KuneiformParserA_SQL_STMT                = 77
+	KuneiformParserA_WS                      = 78
+	KuneiformParserA_TERMINATOR              = 79
+	KuneiformParserA_BLOCK_COMMENT           = 80
+	KuneiformParserA_LINE_COMMENT            = 81
 )
 
 // KuneiformParser rules.
@@ -680,7 +682,7 @@ func (p *KuneiformParser) Source_unit() (localctx ISource_unitContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&281474976735232) != 0 {
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&562949953445888) != 0 {
 		p.SetState(89)
 		p.GetErrorHandler().Sync(p)
 
@@ -1824,7 +1826,7 @@ func (p *KuneiformParser) Column_def() (localctx IColumn_defContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&534773760) != 0 {
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1069547520) != 0 {
 		{
 			p.SetState(146)
 			p.Column_constraint()
@@ -2756,7 +2758,7 @@ func (p *KuneiformParser) Index_def() (localctx IIndex_defContext) {
 		p.SetState(197)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&872415232) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1744830464) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -2928,7 +2930,7 @@ func (p *KuneiformParser) Foreign_key_action() (localctx IForeign_key_actionCont
 		p.SetState(206)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4260607557632) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&8521215115264) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -4752,7 +4754,7 @@ func (p *KuneiformParser) Action_stmt_list() (localctx IAction_stmt_listContext)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = ((int64((_la-70)) & ^0x3f) == 0 && ((int64(1)<<(_la-70))&67) != 0) {
+	for ok := true; ok; ok = ((int64((_la-71)) & ^0x3f) == 0 && ((int64(1)<<(_la-71))&67) != 0) {
 		{
 			p.SetState(270)
 			p.Action_stmt()
@@ -6031,7 +6033,7 @@ func (p *KuneiformParser) A_fn_arg_list() (localctx IA_fn_arg_listContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64((_la-71)) & ^0x3f) == 0 && ((int64(1)<<(_la-71))&23) != 0 {
+	if (int64((_la-72)) & ^0x3f) == 0 && ((int64(1)<<(_la-72))&23) != 0 {
 		{
 			p.SetState(314)
 			p.A_fn_arg()
