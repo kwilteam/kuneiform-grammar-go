@@ -67,11 +67,31 @@ func (v *BaseKuneiformParserVisitor) VisitForeign_key_def(ctx *Foreign_key_defCo
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseKuneiformParserVisitor) VisitAction_visibility(ctx *Action_visibilityContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseKuneiformParserVisitor) VisitAction_mutability(ctx *Action_mutabilityContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseKuneiformParserVisitor) VisitAction_auxiliary(ctx *Action_auxiliaryContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseKuneiformParserVisitor) VisitAction_attr_list(ctx *Action_attr_listContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseKuneiformParserVisitor) VisitAction_decl(ctx *Action_declContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
 func (v *BaseKuneiformParserVisitor) VisitParam_list(ctx *Param_listContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseKuneiformParserVisitor) VisitParameter(ctx *ParameterContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -123,42 +143,42 @@ func (v *BaseKuneiformParserVisitor) VisitAction_stmt(ctx *Action_stmtContext) i
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_sql_stmt(ctx *A_sql_stmtContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitSql_stmt(ctx *Sql_stmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_variable_name(ctx *A_variable_nameContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitVariable(ctx *VariableContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_block_variable_name(ctx *A_block_variable_nameContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitBlock_var(ctx *Block_varContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_literal_value(ctx *A_literal_valueContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitExt_call_name(ctx *Ext_call_nameContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_fn_name(ctx *A_fn_nameContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitCallee_name(ctx *Callee_nameContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_call_receivers(ctx *A_call_receiversContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitCall_receivers(ctx *Call_receiversContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_call_stmt(ctx *A_call_stmtContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitCall_stmt(ctx *Call_stmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_call_body(ctx *A_call_bodyContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitCall_body(ctx *Call_bodyContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_fn_arg_list(ctx *A_fn_arg_listContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitFn_arg_list(ctx *Fn_arg_listContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseKuneiformParserVisitor) VisitA_fn_arg(ctx *A_fn_argContext) interface{} {
+func (v *BaseKuneiformParserVisitor) VisitFn_arg(ctx *Fn_argContext) interface{} {
 	return v.VisitChildren(ctx)
 }
